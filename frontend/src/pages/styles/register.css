@@ -1,0 +1,48 @@
+.registerPage {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  bottom: 80px;
+}
+
+.containerRegister > h1 {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.containerRegister > form {
+  display: flex;
+  width: 550px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.containerRegister input {
+  padding: 4px 8px 4px 8px;
+  width: 550px;
+  margin-bottom: 12px;
+}
+
+.containerRegister label {
+  font-weight: 400;
+}
+
+.containerRegister button {
+  border-radius: 24px;
+  transition: var(--transitionButtonHover);
+}
+
+.containerRegister button:hover {
+  background-color: var(--colorBackgroundButtonHover);
+}
+
+.containerRegister {
+  padding: 1em;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 30px;
+}

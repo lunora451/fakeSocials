@@ -1,0 +1,239 @@
+.post {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  padding: 12px 12px 4px 12px;
+  border-bottom: 1px solid rgb(197, 197, 197);
+  transition: background-color 0.2s ease;
+}
+
+.post:hover {
+  background-color: rgba(219, 219, 219, 0.205);
+  cursor: pointer;
+}
+
+.avatarPost {
+  width: 40px;
+  border-radius: 50%;
+  transition: scale 0.2s ease;
+}
+
+.avatarPost:hover {
+  cursor: pointer;
+  scale: 1.1;
+}
+
+.rightPost {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+
+  align-items: stretch;
+}
+
+.upperPost {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nameDateDiv {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.usernamePost {
+  font-weight: Bold;
+  transition: color 0.2s ease;
+}
+
+.usernamePost:hover {
+  cursor: pointer;
+  color: #35bfd1;
+}
+
+.datePost {
+  color: #536471;
+}
+.contentPost {
+  margin-bottom: 16px;
+}
+
+.likeReplyDiv {
+  display: flex;
+  gap: 64px;
+}
+
+.divHoverEffectReply {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: color 0.1s ease;
+}
+
+.divHoverEffectReply:hover {
+  color: #35bfd1;
+}
+
+.hoverEffectReply {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.hoverEffectReply:hover {
+  background-color: #35bfd14f;
+}
+
+.replyButton {
+  position: relative;
+  top: 1px;
+  border-radius: 50%;
+  font-size: larger;
+}
+
+.divHoverEffectLike {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: color 0.1s ease;
+}
+
+.divHoverEffectLike:hover {
+  color: #621297;
+}
+
+.hoverEffectLike {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.hoverEffectLike:hover {
+  background-color: #6212974f;
+}
+
+.likeButton {
+  position: relative;
+  top: 1px;
+  font-size: larger;
+  cursor: pointer;
+}
+
+.unlikeButton {
+  position: relative;
+  top: 1px;
+  font-size: larger;
+  cursor: pointer;
+}
+
+.commentPost {
+  margin-left: 16px;
+  color: rgb(139 139 139);
+  margin-bottom: 12px;
+  font-size: 0.9em;
+}
+.linkOtherPost {
+  color: black;
+  font-weight: bold;
+}
+
+.linkOtherPost:hover {
+  color: #35bfd1;
+}
+
+.deleteOption {
+  position: relative;
+  top: 1px;
+  font-size: larger;
+  cursor: pointer;
+}
+
+.hoverEffectDelete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  color: black;
+  transition: background-color 0.2s ease;
+  transition: color 0.1s ease;
+}
+
+.hoverEffectDelete:hover {
+  color: #f11707;
+  background-color: #c723174f;
+}
+
+.deletePostModal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  position: absolute;
+  padding: 2em;
+  max-width: 325px;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 24px;
+  top: 40%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+
+  transform: translate(-50%, -50%);
+  z-index: 3;
+}
+
+.deletePostModal > h2 {
+  align-self: flex-start;
+  margin-bottom: 12px;
+}
+.deletePostModal > p {
+  color: #536471;
+  margin-bottom: 24px;
+}
+.deletePostModal > button {
+  border-radius: 24px;
+}
+
+.confirmDeletePost {
+  background-color: #f11707;
+  color: white;
+  margin-bottom: 12px;
+  transition: var(--transitionButtonHover);
+  border: none;
+}
+.confirmDeletePost:hover {
+  background-color: #910a00;
+}
+.cancelDeletePost {
+  transition: var(--transitionButtonHover);
+}
+.cancelDeletePost:hover {
+  background-color: var(--colorBackgroundButtonHover);
+}
+.ReactModal__Overlay {
+  z-index: 3;
+  background-color: rgb(143 143 143 / 75%) !important;
+}
+
+.picturePost {
+  position: relative;
+  margin-top: 24px;
+  right: 13px;
+  max-width: 515px;
+}

@@ -1,0 +1,218 @@
+.sidebar {
+  position: sticky;
+  top: 0px;
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  color: #0f1419;
+  max-width: 600px;
+  height: 100vh;
+}
+
+.sidebarContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+}
+
+.sidebarContent > ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.sidebar > * {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.sidebar a {
+  border: 1px solid transparent;
+  transition: border-color 0.25s;
+  transition: background-color 0.25s;
+}
+
+.sidebar a:hover {
+  background: #f0f0f0;
+  border-color: rgb(37, 199, 248);
+}
+
+.sidebar a.active {
+  background: rgb(37, 199, 248);
+  color: white;
+}
+
+.sidebar a.pending {
+  /* color: #646cff; */
+  color: #0f1419;
+}
+
+.optionHome:hover {
+  background: #e3e3e3;
+}
+
+.avatarHomeButton {
+  width: 40px;
+  border-radius: 50%;
+  height: 40px;
+  object-fit: cover;
+}
+
+.optionHome {
+  display: flex;
+  gap: 20px;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 40px;
+  margin-bottom: 24px;
+}
+
+.optionHome > p {
+  flex: 1;
+}
+
+.optionHeader {
+  font-size: x-large;
+}
+
+.optionHeader a {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 8px 16px 8px 12px;
+  border-radius: 20px;
+}
+
+.modalOption {
+  padding: 12px 0 12px 0;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  border-radius: 16px;
+  border: 1px solid #0f1419;
+  background-color: white;
+  position: relative;
+  top: 10px;
+}
+
+.show > div {
+  background-color: white;
+}
+
+.svgArrowBot {
+  font-size: larger;
+  color: #0f1419;
+  z-index: 3;
+  position: relative;
+  left: 80px;
+  top: 2px;
+}
+
+.logout {
+  padding: 8px 16px 8px 12px;
+  border-top: 1px solid gray;
+  cursor: pointer;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  background-color: #ffffff;
+  transition: background-color 0.25s;
+}
+
+.logout:hover {
+  background-color: #f0f0f0;
+}
+
+.deleteAccount {
+  padding: 8px 16px 8px 12px;
+  border: none;
+  cursor: pointer;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  background-color: #ffffff;
+  transition: background-color 0.25s;
+}
+.deleteAccount:hover {
+  border: none;
+  background-color: #f0f0f0;
+}
+
+.socials {
+  display: flex;
+  gap: 24px;
+  flex-direction: column;
+  font-size: xx-large;
+}
+
+.socials a:hover {
+  background: none;
+  border-color: transparent;
+  cursor: pointer;
+}
+
+.socials a:first-child > svg {
+  color: #0a66c2;
+  animation: rotateAnimation 3s linear infinite;
+}
+
+.socials a:last-child > svg {
+  color: #1f2328;
+  animation: rotateAnimation 3s linear infinite;
+}
+
+@keyframes rotateAnimation {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+@media (max-width: 1200px) {
+  .sidebar {
+    min-width: 280px;
+  }
+}
+@media (max-width: 910px) {
+  .sidebar {
+    min-width: initial;
+  }
+  .sidebar a > p {
+    display: none;
+  }
+  .optionHeader > a {
+    padding: 4px 4px 4px 4px;
+    border-radius: 50%;
+  }
+  .optionHome > img {
+    display: none;
+  }
+  .optionHome > p {
+    display: none;
+  }
+}
+
+@media (max-width: 750px) {
+  .sidebar > * {
+    margin: 10px;
+  }
+  .optionHome {
+    padding: 4px 4px 4px 4px;
+    border-radius: 50%;
+  }
+}
+@media (max-width: 650px) {
+  .sidebar > * {
+    margin: 6px;
+  }
+}

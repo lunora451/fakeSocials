@@ -1,0 +1,153 @@
+.poster {
+  display: flex;
+  width: 100%;
+  padding: 12px 12px 4px 12px;
+  border-bottom: 1px solid rgb(197, 197, 197);
+}
+
+.avatarPoster {
+  width: 40px;
+  border-radius: 50%;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-self: start;
+  align-self: stretch;
+  max-width: 515px;
+}
+
+.invisibleInput {
+  max-width: 100%;
+  outline: none;
+  margin-top: 16px;
+  display: block;
+  resize: none;
+  /* overflow: hidden; */
+}
+.invisibleInput:hover {
+  cursor: pointer;
+}
+.invisibleInput:empty:before {
+  color: grey;
+  content: attr(data-placeholder);
+}
+
+.videoContentHolder {
+  display: none;
+}
+
+.optionPost {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.optionPost > div {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.hoverEffectCancelPicture {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  color: black;
+  transition: background-color 0.2s ease;
+  transition: color 0.1s ease;
+}
+
+.hoverEffectCancelPicture:hover {
+  color: #f11707;
+  background-color: #c723174f;
+}
+
+#showCancelPicture {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+}
+
+.cancelPicture {
+  font-size: larger;
+  cursor: pointer;
+}
+
+.photoAddPost {
+  font-size: larger;
+  cursor: pointer;
+}
+
+.labelPhotoPoster {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  color: rgb(18, 159, 202);
+  transition: background-color 0.2s ease;
+}
+
+.labelPhotoPoster:hover {
+  background-color: rgba(18, 159, 202, 0.267);
+}
+
+.optionPost > p {
+  flex: 1;
+}
+.optionPost div:last-child {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+}
+
+.justPostIt {
+  border-radius: 24px;
+  color: white;
+  font-weight: bold;
+  background-color: rgb(18, 159, 202);
+  transition: border-color 0.2s ease;
+}
+
+.justPostIt:hover {
+  border-color: rgb(18, 159, 202);
+}
+.counterBlue {
+  color: rgb(18, 159, 202);
+}
+
+.counterRed {
+  color: #f11707;
+}
+.disabledButton {
+  border-radius: 24px;
+  color: white;
+  font-weight: bold;
+  background-color: rgb(18, 159, 202);
+  transition: border-color 0.2s ease;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.pictureContentHolder {
+  position: relative;
+  margin: 24px 0px 24px 0px;
+  right: 26px;
+  max-width: 515px;
+}
+
+#imagePoster {
+  display: none;
+}

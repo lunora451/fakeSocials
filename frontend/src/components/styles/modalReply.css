@@ -1,0 +1,232 @@
+.smokeScreenEditProfileModal {
+  width: 100%;
+  height: 100%;
+  position: sticky;
+  cursor: initial;
+  top: 0;
+  left: 0;
+  background-color: rgb(143 143 143 / 75%);
+  z-index: 2;
+}
+
+.modalReply {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  position: absolute;
+  padding: 12px 3px 12px 3px;
+  width: 600px;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 16px;
+  top: 40%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+
+  transform: translate(-50%, -50%);
+  z-index: 3;
+}
+
+.postReply {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  padding: 12px 12px 4px 12px;
+  border-bottom: 1px solid rgb(197, 197, 197);
+  transition: background-color 0.2s ease;
+}
+
+.avatarPostReply {
+  width: 40px;
+  border-radius: 50%;
+  transition: scale 0.2s ease;
+}
+
+.avatarPostReply :hover {
+  cursor: pointer;
+  scale: 1.1;
+}
+
+.rightPostReply {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.upperPostReply {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nameDateDivReply {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.usernamePostReply {
+  font-weight: Bold;
+  color: black;
+  transition: color 0.2s ease;
+}
+
+.usernamePostReply :hover {
+  cursor: pointer;
+  color: #35bfd1;
+}
+
+.datePostReply {
+  color: #536471;
+}
+.contentPostReply {
+  color: black;
+  margin-bottom: 16px;
+}
+
+.posterReply {
+  display: flex;
+  width: 100%;
+  padding: 12px 12px 4px 12px;
+}
+
+.avatarPosterReply {
+  width: 40px;
+  border-radius: 50%;
+}
+
+.contentReply {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-self: start;
+  align-self: stretch;
+  color: black;
+  max-width: 515px;
+}
+
+.invisibleInputReply {
+  max-width: 100%;
+  outline: none;
+  margin-top: 16px;
+  display: block;
+  resize: none;
+  /* overflow: hidden; */
+}
+.invisibleInputReply:hover {
+  cursor: pointer;
+}
+.invisibleInputReply:empty:before {
+  color: grey;
+  content: attr(data-placeholder);
+}
+
+.videoContentHolderReply {
+  display: none;
+}
+
+.optionPostReply {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.photoAddPostReply {
+  font-size: larger;
+  cursor: pointer;
+}
+
+.labelPhotoReply {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  color: rgb(18, 159, 202);
+  transition: background-color 0.2s ease;
+}
+
+.labelPhotoReply:hover {
+  background-color: rgba(18, 159, 202, 0.267);
+}
+.attachment {
+  max-width: 230px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#imageReply {
+  display: none;
+}
+
+.pictureContainerReply {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+}
+
+.hoverEffectCancelPictureReply:hover {
+  color: #f11707;
+  background-color: #c723174f;
+}
+
+#showCancelPictureReply {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+}
+
+.pictureContentHolderReply {
+  position: relative;
+  margin: 24px 0px 24px 0px;
+  right: 26px;
+  max-width: 515px;
+}
+
+.optionPostReply > p {
+  flex: 1;
+}
+.optionPostReply div:last-child {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+}
+
+.justPostItReply {
+  border-radius: 24px;
+  color: white;
+  font-weight: bold;
+  background-color: rgb(18, 159, 202);
+  transition: border-color 0.2s ease;
+}
+
+.justPostItReply:hover {
+  border-color: rgb(18, 159, 202);
+}
+.counterBlueReply {
+  color: rgb(18, 159, 202);
+}
+
+.counterRedReply {
+  color: #f11707;
+}
+
+.disabledButtonReply {
+  border-radius: 24px;
+  color: white;
+  font-weight: bold;
+  background-color: rgb(18, 159, 202);
+  transition: border-color 0.2s ease;
+  pointer-events: none;
+  opacity: 0.6;
+}

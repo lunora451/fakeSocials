@@ -1,0 +1,264 @@
+.profileMe {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.headerProfileMe {
+  color: #536471;
+  border-bottom: 1px solid rgb(197, 197, 197);
+}
+
+.topProfileMe {
+  padding: 8px 0 8px 16px;
+  position: sticky;
+  top: 0px;
+  background-color: #ffffffe6;
+  z-index: 3;
+}
+
+.nameUserMe {
+  font-size: larger;
+  font-weight: bold;
+  color: #0f1419;
+}
+
+.biographieMe {
+  color: black;
+  margin-top: 14px;
+}
+
+.countPostMe {
+  font-size: smaller;
+  color: #536471;
+}
+
+.bannerUserMe,
+.bannerUserEditProfileMe {
+  object-fit: cover;
+  min-width: 100%;
+  max-height: 250px;
+}
+
+.avatarMe,
+.avatarEditProfileMe {
+  position: relative;
+  margin-bottom: -10%;
+  bottom: 70px;
+  left: 20px;
+  width: 140px;
+  border-radius: 50%;
+  z-index: 2;
+  border: 4px solid white;
+  height: 140px;
+  object-fit: cover;
+}
+
+.labelFileAvatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 50%;
+  left: 12%;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  z-index: 3;
+  background-color: #d1d1d160;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.labelFileAvatar:hover {
+  background-color: #7e7e7ea1;
+}
+
+.iconChangeAvatar {
+  font-size: xx-large;
+  color: #0f1419;
+}
+
+.labelFileWallpaper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 24%;
+  left: 46%;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  z-index: 3;
+  background-color: #d1d1d160;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.labelFileWallpaper:hover {
+  background-color: #7e7e7ea1;
+}
+
+#wallpaperProfil {
+  display: none;
+}
+
+.iconChangeWallpaper {
+  font-size: xx-large;
+  color: #0f1419;
+}
+
+.editProfileMe {
+  position: relative;
+  float: right;
+  top: 10px;
+  right: 10px;
+  border-radius: 24px;
+  transition: var(--transitionButtonHover);
+}
+
+.editProfileMe:hover {
+  background-color: var(--colorBackgroundButtonHover);
+}
+
+.joinDateContainerMe {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.joinDateContainerMe > svg {
+  position: relative;
+  top: 1px;
+}
+
+.boldB {
+  font-weight: bold;
+  color: #0f1419;
+}
+.followDivMe {
+  display: flex;
+  gap: 24px;
+  margin: 24px 0 12px 16px;
+}
+
+.flex {
+  display: flex;
+  gap: 4px;
+}
+
+.listPostMe {
+  display: flex;
+  flex-direction: column;
+}
+.listPostMe > li {
+  width: 100%;
+}
+
+.smokeScreenEditProfileModal {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  cursor: initial;
+  top: 0;
+  left: 0;
+  background-color: rgb(143 143 143 / 75%);
+  z-index: 2;
+}
+
+.editProfileModal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+
+  position: absolute;
+  padding: 12px 3px 12px 3px;
+  width: 600px;
+  background-color: white;
+  border: black;
+  border-radius: 16px;
+  top: 40%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+
+  transform: translate(-50%, -50%);
+  z-index: 3;
+}
+
+.topBannerEditProfilMe {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.crossCancelEdit {
+  position: relative;
+  border-radius: 50%;
+  color: black;
+  font-size: larger;
+}
+.topBannerEditProfilMe > p {
+  color: black;
+  font-size: larger;
+  font-weight: bold;
+  margin-left: 12px;
+  flex: 1;
+}
+.hoverEffectCancelEdit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 12px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.hoverEffectCancelEdit:hover {
+  background-color: #b3b3b34f;
+}
+
+.saveEditProfile {
+  margin-right: 12px;
+  border-radius: 24px;
+  transition: var(--transitionButtonHover);
+  transition: color 0.2s ease;
+}
+
+.saveEditProfile:hover {
+  border-color: rgba(146, 238, 146, 0.829);
+  background-color: rgba(146, 238, 146, 0.829);
+}
+
+.formEditProfil {
+  color: black;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  /* margin-bottom: 12px; */
+}
+
+.formEditProfil > input {
+  font-family: var(--font-family);
+  margin-bottom: 12px;
+  padding: 8px;
+  font-size: medium;
+}
+
+.formEditProfil > * {
+  margin: 0 16px 0 16px;
+}
+
+#editBioProfile {
+  font-family: var(--font-family);
+  margin-bottom: 12px;
+  padding: 8px;
+  font-size: medium;
+  resize: none;
+}
+
+#photoProfil {
+  display: none;
+}

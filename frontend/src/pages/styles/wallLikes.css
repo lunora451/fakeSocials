@@ -1,0 +1,21 @@
+.wallLikes {
+  display: flex;
+  flex-direction: column;
+}
+
+.topBannerWallLikes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ac00d3;
+  height: 58px;
+  position: sticky;
+  top: 0px;
+  background-color: #ffffffe6;
+  z-index: 3;
+}
+
+.wallLikes > ul {
+  display: flex;
+  flex-direction: column;
+}

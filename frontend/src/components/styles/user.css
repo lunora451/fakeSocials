@@ -1,0 +1,48 @@
+.userDiv {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  height: 80px;
+  padding: 4px 12px 4px 12px;
+  border-bottom: 1px solid rgb(197, 197, 197);
+  transition: background-color 0.2s ease;
+}
+
+.userDiv > div {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  flex: 1;
+}
+
+.avatarUser {
+  width: 40px;
+  border-radius: 50%;
+  transition: scale 0.2s ease;
+}
+
+.avatarUser:hover {
+  cursor: pointer;
+  scale: 1.1;
+}
+
+.usernameUser {
+  font-weight: Bold;
+  transition: color 0.2s ease;
+}
+
+.usernameUser:hover {
+  cursor: pointer;
+  color: #35bfd1;
+}
+
+.dateUser {
+  color: #536471;
+}
+
+.followerUser {
+  margin-right: 25px;
+  color: #536471;
+}
