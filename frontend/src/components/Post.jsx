@@ -140,7 +140,10 @@ const Post = ({
   return (
     <div className="post" onClick={(e) => handleClickPost(e)}>
       <img
-        src={updatedPost.author.picture || avatar}
+        src={
+          `${process.env.REACT_APP_BACKEND_URL}${userUpdated.author.picture}` ||
+          avatar
+        }
         alt="default avatar profil"
         className="avatarPost"
         onClick={(e) => goToProfileUser(e)}
