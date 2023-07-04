@@ -104,12 +104,6 @@ const Post = ({
 
   const handleComment = async (e, objectComment) => {
     e.stopPropagation();
-    // const commentObject = {
-    //   postId: objectComment.postId,
-    //   author: userId,
-    //   message: objectComment.textPost,
-    //   picture: objectComment.picture,
-    // };
 
     const formDataComment = new FormData();
 
@@ -146,7 +140,7 @@ const Post = ({
   return (
     <div className="post" onClick={(e) => handleClickPost(e)}>
       <img
-        src={avatar}
+        src={updatedPost.author.picture || avatar}
         alt="default avatar profil"
         className="avatarPost"
         onClick={(e) => goToProfileUser(e)}

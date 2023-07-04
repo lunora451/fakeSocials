@@ -45,7 +45,7 @@ const Poster = ({ user, handlePost }) => {
     <div className="poster">
       <div className="imgUser">
         <img
-          src={avatar}
+          src={user.picture || avatar}
           alt="default avatar profil"
           className="avatarPoster"
         />

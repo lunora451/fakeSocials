@@ -232,8 +232,8 @@
 }
 
 .picturePost {
-  position: relative;
   margin-top: 24px;
-  right: 13px;
-  max-width: 515px;
+  margin-left: 16px;
+  margin-bottom: 12px;
+  max-width: 500px;
 }
