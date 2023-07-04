@@ -141,7 +141,7 @@ const Post = ({
     <div className="post" onClick={(e) => handleClickPost(e)}>
       <img
         src={
-          `${process.env.REACT_APP_BACKEND_URL}${userUpdated.author.picture}` ||
+          `${process.env.REACT_APP_BACKEND_URL}${updatedPost.author.picture}` ||
           avatar
         }
         alt="default avatar profil"
