@@ -4,6 +4,7 @@ import avatar from "../assets/img/avatarDefault.png";
 import { TbPhotoPlus } from "react-icons/tb";
 import { toFormattedDateWithHours } from "../utils/date";
 import { ImCancelCircle } from "react-icons/im";
+import Cookies from "js-cookie";
 
 const ModalReply = ({ setShowModalReply, updatedPost, handleComment }) => {
   const [characterCount, setCharacterCount] = useState(0);
@@ -15,6 +16,7 @@ const ModalReply = ({ setShowModalReply, updatedPost, handleComment }) => {
   const maxLengthChar = 140;
   const spanRef = useRef(null);
   const inputRef = useRef(null);
+  const pictureUser = Cookies.get("pictureUser");
 
   useEffect(() => {
     const isButtonEnabled = characterCount !== 0 || pictureReply !== null;
@@ -46,7 +48,7 @@ const ModalReply = ({ setShowModalReply, updatedPost, handleComment }) => {
     >
       <div className="postReply">
         <img
-          src={avatar}
+          src={updatedPost.author.picture || avatar}
           alt="default avatar profil"
           className="avatarPostReply"
         />
@@ -65,7 +67,7 @@ const ModalReply = ({ setShowModalReply, updatedPost, handleComment }) => {
       <div className="posterReply">
         <div className="imgUserReply">
           <img
-            src={avatar}
+            src={pictureUser || avatar}
             alt="default avatar profil"
             className="avatarPosterReply"
           />

@@ -18,6 +18,11 @@ import wallpaper from "../assets/img/wallpaperDefault.jpg";
 export async function profileMeLoader() {
   const userId = Cookies.get("idUser");
   const user = await getUserById(userId);
+  if (user.picture) {
+    Cookies.set("pictureUser", user.picture);
+  } else {
+    Cookies.set("pictureUser", null);
+  }
   return { user };
 }
 
@@ -146,7 +151,9 @@ const ProfileMe = () => {
 
     const userEdited = await editUserById(formData);
 
-    console.log(userEdited);
+    if (userEdited.picture) {
+      Cookies.set("pictureUser", user.picture);
+    }
 
     setUserUpdated(userEdited);
 
@@ -216,9 +223,10 @@ const ProfileMe = () => {
             </label>
             <img
               src={
-                wallpaperModal ||
-                `${process.env.REACT_APP_BACKEND_URL}${userUpdated.wallpaper}` ||
-                wallpaper
+                wallpaperModal || userUpdated.wallpaper
+                  ? wallpaperModal ||
+                    `${process.env.REACT_APP_BACKEND_URL}${userUpdated.wallpaper}`
+                  : wallpaper
               }
               alt="wallpaper_profile"
               className="bannerUserEditProfileMe"
@@ -235,9 +243,10 @@ const ProfileMe = () => {
             />
             <img
               src={
-                pictureModal ||
-                `${process.env.REACT_APP_BACKEND_URL}${userUpdated.picture}` ||
-                avatar
+                pictureModal || userUpdated.picture
+                  ? pictureModal ||
+                    `${process.env.REACT_APP_BACKEND_URL}${userUpdated.picture}`
+                  : avatar
               }
               alt="avatar_profile"
               className="avatarEditProfileMe"
