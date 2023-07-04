@@ -48,7 +48,11 @@ const ModalReply = ({ setShowModalReply, updatedPost, handleComment }) => {
     >
       <div className="postReply">
         <img
-          src={updatedPost.author.picture || avatar}
+          src={
+            updatedPost.author.picture
+              ? `${process.env.REACT_APP_BACKEND_URL}${updatedPost.author.picture}`
+              : avatar
+          }
           alt="default avatar profil"
           className="avatarPostReply"
         />
@@ -67,7 +71,11 @@ const ModalReply = ({ setShowModalReply, updatedPost, handleComment }) => {
       <div className="posterReply">
         <div className="imgUserReply">
           <img
-            src={pictureUser || avatar}
+            src={
+              pictureUser
+                ? `${process.env.REACT_APP_BACKEND_URL}${pictureUSer}`
+                : avatar
+            }
             alt="default avatar profil"
             className="avatarPosterReply"
           />

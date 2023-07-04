@@ -13,6 +13,7 @@ import "./styles/post.css";
 
 const Post = ({
   post,
+  userNamePicture,
   setListComment,
   handleDeletePost,
   postDetail,
@@ -141,8 +142,13 @@ const Post = ({
     <div className="post" onClick={(e) => handleClickPost(e)}>
       <img
         src={
-          `${process.env.REACT_APP_BACKEND_URL}${updatedPost.author.picture}` ||
-          avatar
+          isUserPost
+            ? userNamePicture.picture
+              ? `${process.env.REACT_APP_BACKEND_URL}${userNamePicture.picture}`
+              : avatar
+            : updatedPost.author.picture
+            ? `${process.env.REACT_APP_BACKEND_URL}${updatedPost.author.picture}`
+            : avatar
         }
         alt="default avatar profil"
         className="avatarPost"
@@ -152,7 +158,7 @@ const Post = ({
         <div className="upperPost">
           <div className="nameDateDiv ml16">
             <p className="usernamePost" onClick={(e) => goToProfileUser(e)}>
-              {updatedPost.author.pseudo}
+              {isUserPost ? userNamePicture : updatedPost.author.pseudo}
             </p>
             <p className="datePost">
               {toFormattedDateWithHours(updatedPost.createdAt)}

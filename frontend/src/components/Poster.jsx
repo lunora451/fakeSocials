@@ -45,7 +45,11 @@ const Poster = ({ user, handlePost }) => {
     <div className="poster">
       <div className="imgUser">
         <img
-          src={`${process.env.REACT_APP_BACKEND_URL}${user.picture}` || avatar}
+          src={
+            user.picture
+              ? `${process.env.REACT_APP_BACKEND_URL}${user.picture}`
+              : avatar
+          }
           alt="default avatar profil"
           className="avatarPoster"
         />

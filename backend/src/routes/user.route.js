@@ -143,7 +143,6 @@ router.get(
       "picture pseudo"
     ).exec();
 
-    console.log(nameUser);
     if (!nameUser) {
       return res.status(404).json({ error: "User not found" });
     }

@@ -303,6 +303,7 @@ const ProfileMe = () => {
               return (
                 <li key={post._id}>
                   <Post
+                    userNamePicture={userNamePicture}
                     post={post}
                     handleDeletePost={handleDeletePost}
                     handleCommentProfile={handleCommentProfile}
