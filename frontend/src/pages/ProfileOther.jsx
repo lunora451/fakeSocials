@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { useLoaderData, useNavigate, useOutletContext } from "react-router-dom";
 import {
   getOtherUserById,
   followAccount,
@@ -21,6 +21,7 @@ export async function profileOtherLoader({ params }) {
 
 const ProfileOther = () => {
   const navigate = useNavigate();
+  const [userNamePicture, setUserNamePicture] = useOutletContext();
   const { objectProfileUser } = useLoaderData();
   const { user, isFollow } = objectProfileUser;
   const [userUpdated, setUserUpdated] = useState(user);
@@ -119,7 +120,11 @@ const ProfileOther = () => {
             {listPost.map((post) => {
               return (
                 <li key={post._id}>
-                  <Post post={post} setIfComment={true} />
+                  <Post
+                    userNamePicture={userNamePicture}
+                    post={post}
+                    setIfComment={true}
+                  />
                 </li>
               );
             })}

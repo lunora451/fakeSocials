@@ -6,7 +6,12 @@ import { toFormattedDateWithHours } from "../utils/date";
 import { ImCancelCircle } from "react-icons/im";
 import Cookies from "js-cookie";
 
-const ModalReply = ({ setShowModalReply, updatedPost, handleComment }) => {
+const ModalReply = ({
+  isUserPost,
+  userNamePicture,
+  updatedPost,
+  handleComment,
+}) => {
   const [characterCount, setCharacterCount] = useState(0);
   const [textPost, setTextPost] = useState("");
   const [pictureReply, setPictureReply] = useState(null);
@@ -16,7 +21,7 @@ const ModalReply = ({ setShowModalReply, updatedPost, handleComment }) => {
   const maxLengthChar = 140;
   const spanRef = useRef(null);
   const inputRef = useRef(null);
-  const pictureUser = Cookies.get("pictureUser");
+  // const pictureUser = Cookies.get("pictureUser");
 
   useEffect(() => {
     const isButtonEnabled = characterCount !== 0 || pictureReply !== null;
@@ -39,6 +44,11 @@ const ModalReply = ({ setShowModalReply, updatedPost, handleComment }) => {
     inputRef.current.value = "";
   };
 
+  // const handleImage = () => {
+  //   // console.log(pictureUser);
+  //   return avatar;
+  // };
+
   return (
     <div
       className="modalReply"
@@ -49,7 +59,11 @@ const ModalReply = ({ setShowModalReply, updatedPost, handleComment }) => {
       <div className="postReply">
         <img
           src={
-            updatedPost.author.picture
+            isUserPost
+              ? userNamePicture.picture
+                ? `${process.env.REACT_APP_BACKEND_URL}${userNamePicture.picture}`
+                : avatar
+              : updatedPost.author.picture
               ? `${process.env.REACT_APP_BACKEND_URL}${updatedPost.author.picture}`
               : avatar
           }
@@ -72,8 +86,8 @@ const ModalReply = ({ setShowModalReply, updatedPost, handleComment }) => {
         <div className="imgUserReply">
           <img
             src={
-              pictureUser
-                ? `${process.env.REACT_APP_BACKEND_URL}${pictureUser}`
+              userNamePicture.picture
+                ? `${process.env.REACT_APP_BACKEND_URL}${userNamePicture.picture}`
                 : avatar
             }
             alt="default avatar profil"

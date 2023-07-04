@@ -158,7 +158,7 @@ const Post = ({
         <div className="upperPost">
           <div className="nameDateDiv ml16">
             <p className="usernamePost" onClick={(e) => goToProfileUser(e)}>
-              {isUserPost ? userNamePicture : updatedPost.author.pseudo}
+              {isUserPost ? userNamePicture.pseudo : updatedPost.author.pseudo}
             </p>
             <p className="datePost">
               {toFormattedDateWithHours(updatedPost.createdAt)}
@@ -236,7 +236,8 @@ const Post = ({
             className="replyPostModal"
           >
             <ModalReply
-              setShowModalReply={setShowModalReply}
+              isUserPost={isUserPost}
+              userNamePicture={userNamePicture}
               updatedPost={updatedPost}
               handleComment={handleComment}
             />

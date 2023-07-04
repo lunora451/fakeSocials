@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useOutletContext } from "react-router-dom";
 import Post from "../components/Post";
 import { getAllLikes, deletePost } from "../network/post_api";
 import "./styles/wallLikes.css";
@@ -12,6 +12,7 @@ export async function wallLikesLoader({ params }) {
 const WallLikes = () => {
   const { listPosts } = useLoaderData();
   const [listPostsState, setListPostsState] = useState(listPosts);
+  const [userNamePicture, setUserNamePicture] = useOutletContext();
 
   const handleDeletePost = async (e, postId) => {
     e.stopPropagation();
@@ -34,6 +35,7 @@ const WallLikes = () => {
           return (
             <li key={post._id}>
               <Post
+                userNamePicture={userNamePicture}
                 post={post}
                 handleDeletePost={handleDeletePost}
                 setIfComment={true}

@@ -205,6 +205,12 @@ router.delete(
       },
     });
 
+    await UserModel.updateMany({
+      $pull: {
+        likes: postId,
+      },
+    });
+
     await PostModel.findByIdAndUpdate(postId, {
       $pull: {
         comments: postId,

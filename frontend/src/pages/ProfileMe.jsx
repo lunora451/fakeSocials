@@ -92,7 +92,15 @@ const ProfileMe = () => {
     const postIdDelete = await deletePost(postId);
 
     setListPost((prevListPost) =>
-      prevListPost.filter((post) => post._id !== postIdDelete)
+      prevListPost.filter((post) => {
+        if (post._id === postIdDelete) {
+          return false;
+        }
+        if (post.isCommentOf && post.isCommentOf[0] === postIdDelete) {
+          return false;
+        }
+        return true;
+      })
     );
   };
 

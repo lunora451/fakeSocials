@@ -184,6 +184,9 @@
   }
 }
 @media (max-width: 910px) {
+  .svgArrowBot {
+    left: 15px;
+  }
   .sidebar {
     min-width: initial;
   }
@@ -203,6 +206,9 @@
 }
 
 @media (max-width: 750px) {
+  .svgArrowBot {
+    visibility: hidden;
+  }
   .sidebar > * {
     margin: 10px;
   }
@@ -214,5 +220,13 @@
 @media (max-width: 650px) {
   .sidebar > * {
     margin: 6px;
+  }
+}
+
+@media (max-width: 650px) {
+  .modalOption {
+    position: fixed;
+    bottom: 50px;
+    top: initial;
   }
 }

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useOutletContext } from "react-router-dom";
 import Post from "../components/Post";
 import { getAllPosts, deletePost } from "../network/post_api";
 import "./styles/wallPosts.css";
@@ -12,6 +12,7 @@ export async function wallPostLoader() {
 const WallPost = () => {
   const { listPosts } = useLoaderData();
   const [listPostsState, setListPostsState] = useState(listPosts);
+  const [userNamePicture, setUserNamePicture] = useOutletContext();
 
   const handleDeletePost = async (e, postId) => {
     e.stopPropagation();
@@ -33,7 +34,11 @@ const WallPost = () => {
         {listPostsState.map((post) => {
           return (
             <li key={post._id}>
-              <Post post={post} handleDeletePost={handleDeletePost} />
+              <Post
+                userNamePicture={userNamePicture}
+                post={post}
+                handleDeletePost={handleDeletePost}
+              />
             </li>
           );
         })}

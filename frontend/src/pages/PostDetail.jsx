@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Post from "../components/Post";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { useLoaderData, useNavigate, useOutletContext } from "react-router-dom";
 import { getPostDetail, deletePost } from "../network/post_api";
 import { FaArrowLeft } from "react-icons/fa";
 import "./styles/postDetail.css";
@@ -15,6 +15,7 @@ export async function postDetailLoader({ params }) {
 const PostDetail = () => {
   const navigate = useNavigate();
   const { post } = useLoaderData();
+  const [userNamePicture, setUserNamePicture] = useOutletContext();
   const [updatedPostDetail, setUpdatedPostDetail] = useState(post);
   const [listComment, setListComment] = useState(updatedPostDetail.comments);
 
@@ -46,6 +47,7 @@ const PostDetail = () => {
       </div>
 
       <Post
+        userNamePicture={userNamePicture}
         post={updatedPostDetail}
         setListComment={setListComment}
         handleDeletePost={handleDeletePost}
@@ -59,6 +61,7 @@ const PostDetail = () => {
           return (
             <li key={comment._id}>
               <Post
+                userNamePicture={userNamePicture}
                 post={comment}
                 handleDeletePost={handleDeletePost}
                 setListComment={setListComment}
