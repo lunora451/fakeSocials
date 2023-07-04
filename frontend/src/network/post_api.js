@@ -23,7 +23,7 @@ export const postMe = async (formDataPoster) => {
       throw new Error("Error on fetching user :/");
     }
   } catch (error) {
-    throw new Error("Error on fetching user :/");
+    throw new Error(error.response.data.error);
   }
 };
 
@@ -49,7 +49,7 @@ export const postComment = async (formDataComment) => {
       throw new Error("Error on fetching user :/");
     }
   } catch (error) {
-    throw new Error("Error on fetching user :/");
+    throw new Error(error.response.data.error);
   }
 };
 
@@ -78,7 +78,7 @@ export const likePost = async (postId) => {
       throw new Error("Error on fetching user :/");
     }
   } catch (error) {
-    throw new Error("Error on fetching user :/");
+    throw new Error(error.response.data.error);
   }
 };
 
@@ -107,7 +107,7 @@ export const unLikePost = async (postId) => {
       throw new Error("Error on fetching user :/");
     }
   } catch (error) {
-    throw new Error("Error on fetching user :/");
+    throw new Error(error.response.data.error);
   }
 };
 
@@ -134,7 +134,7 @@ export const deletePost = async (postId) => {
       throw new Error("Error on fetching user :/");
     }
   } catch (error) {
-    throw new Error("Error on fetching user :/");
+    throw new Error(error.response.data.error);
   }
 };
 
@@ -157,7 +157,7 @@ export const getPostDetail = async (postId) => {
       throw new Error("Error on fetching user :/");
     }
   } catch (error) {
-    throw new Error("Error on fetching user :/");
+    throw new Error(error.response.data.error);
   }
 };
 
@@ -181,7 +181,7 @@ export const getAllPosts = async () => {
       throw new Error("Error on fetching user :/");
     }
   } catch (error) {
-    throw new Error("Error on fetching user :/");
+    throw new Error(error.response.data.error);
   }
 };
 
@@ -205,6 +205,6 @@ export const getAllLikes = async (userId) => {
       throw new Error("Error on fetching user :/");
     }
   } catch (error) {
-    throw new Error("Error on fetching user :/");
+    throw new Error(error.response.data.error);
   }
 };

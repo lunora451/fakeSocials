@@ -23,7 +23,7 @@ export const editUserById = async (formData) => {
       throw new Error("Error on fetching user :/");
     }
   } catch (error) {
-    throw new Error("Error on fetching user :/");
+    throw new Error(error.response.data.error);
   }
 };
 
@@ -51,7 +51,7 @@ export const getOtherUserById = async (id) => {
       throw new Error("Error on fetching user :/");
     }
   } catch (error) {
-    throw new Error("Error on fetching user :/");
+    throw new Error(error.response.data.error);
   }
 };
 
@@ -75,7 +75,7 @@ export const getUserById = async (id) => {
       throw new Error("Error on fetching user :/");
     }
   } catch (error) {
-    throw new Error("Connection Token has expire, you need to login again");
+    throw new Error(error.response.data.error);
   }
 };
 
@@ -99,7 +99,7 @@ export const getNamePictureUser = async (id) => {
       throw new Error("Error on fetching user :/");
     }
   } catch (error) {
-    throw new Error("Connection Token has expire, you need to login again");
+    throw new Error(error.response.data.error);
   }
 };
 
@@ -123,7 +123,7 @@ export const getAllFollowerById = async (id) => {
       throw new Error("Error on fetching user :/");
     }
   } catch (error) {
-    throw new Error("Connection Token has expire, you need to login again");
+    throw new Error(error.response.data.error);
   }
 };
 
@@ -147,7 +147,7 @@ export const getAllFollowingById = async (id) => {
       throw new Error("Error on fetching user :/");
     }
   } catch (error) {
-    throw new Error("Connection Token has expire, you need to login again");
+    throw new Error(error.response.data.error);
   }
 };
 
@@ -177,7 +177,7 @@ export const followAccount = async (otherUserId) => {
       throw new Error("Error on fetching user :/");
     }
   } catch (error) {
-    throw new Error("Error on fetching user :/");
+    throw new Error(error.response.data.error);
   }
 };
 
@@ -207,7 +207,7 @@ export const unFollowAccount = async (otherUserId) => {
       throw new Error("Error on fetching user :/");
     }
   } catch (error) {
-    throw new Error("Error on fetching user :/");
+    throw new Error(error.response.data.error);
   }
 };
 
@@ -229,10 +229,10 @@ export const loginApi = async (loginInfo) => {
 
       return response.data;
     } else {
-      throw new Error("bep bep connection not Working!");
+      throw new Error("Seems you're pseudo or password doesn't exist :/");
     }
   } catch (error) {
-    throw new Error("bep bep connection not Working!");
+    throw new Error(error.response.data.error);
   }
 };
 
@@ -254,7 +254,7 @@ export const registerApi = async (registerInfo) => {
       throw new Error("Oops!");
     }
   } catch (error) {
-    throw new Error("Oops!");
+    throw new Error(error.response.data.error);
   }
 };
 export const deleteAccountCall = async () => {
@@ -277,6 +277,6 @@ export const deleteAccountCall = async () => {
       throw new Error("Oops!");
     }
   } catch (error) {
-    throw new Error("Oops!");
+    throw new Error(error.response.data.error);
   }
 };
