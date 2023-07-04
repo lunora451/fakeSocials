@@ -65,6 +65,14 @@ const Login = () => {
           Authentication is powered by
           <img src={jwtImage} alt="icon jwtToken" />
         </i>
+        <br />
+        <br />
+        <p>
+          Disclaimer : the first time you will make an action it will take{" "}
+          <br />
+          30sec-1min for Webservice to wake up as it is upload on a free service
+          from Render
+        </p>
       </div>
     </div>
   );
