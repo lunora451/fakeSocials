@@ -73,7 +73,7 @@ const ModalReply = ({ setShowModalReply, updatedPost, handleComment }) => {
           <img
             src={
               pictureUser
-                ? `${process.env.REACT_APP_BACKEND_URL}${pictureUSer}`
+                ? `${process.env.REACT_APP_BACKEND_URL}${pictureUser}`
                 : avatar
             }
             alt="default avatar profil"
