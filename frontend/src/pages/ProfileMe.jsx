@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useLoaderData, useOutletContext } from "react-router-dom";
+import {
+  Navigate,
+  useLoaderData,
+  useOutletContext,
+  useNavigate,
+} from "react-router-dom";
 import { getUserById, editUserById } from "../network/user_api";
 import { IoCalendarOutline } from "react-icons/io5";
 import Modal from "react-modal";
@@ -28,6 +33,7 @@ export async function profileMeLoader() {
 
 const ProfileMe = () => {
   const { user } = useLoaderData();
+  const navigate = useNavigate();
   const [userNamePicture, setUserNamePicture] = useOutletContext();
 
   const [userUpdated, setUserUpdated] = useState(user);
@@ -54,6 +60,13 @@ const ProfileMe = () => {
     setWallpaperModal(null);
   }
 
+  const goToFollowing = () => {
+    navigate(`/Home/WallFollowing/${userUpdated._id}`);
+  };
+  const goToFollower = () => {
+    navigate(`/Home/WallFollower/${userUpdated._id}`);
+  };
+
   const concatSortPost = (posts, comments) => {
     // Concatenate the two arrays
     const combinedPosts = posts.concat(comments);
@@ -72,6 +85,8 @@ const ProfileMe = () => {
     concatSortPost(user.posts, user.comments)
   );
 
+  useEffect(() => {}, [listPost]);
+
   const handlePost = async (textPost, picturePoster) => {
     const formDataPost = new FormData();
 
@@ -84,6 +99,7 @@ const ProfileMe = () => {
     }
 
     const post = await postMe(formDataPost);
+
     setListPost([post, ...listPost]);
   };
 
@@ -91,8 +107,8 @@ const ProfileMe = () => {
     e.stopPropagation();
     const postIdDelete = await deletePost(postId);
 
-    setListPost((prevListPost) =>
-      prevListPost.filter((post) => {
+    setListPost((prevListPost) => {
+      const filteredList = prevListPost.filter((post) => {
         if (post._id === postIdDelete) {
           return false;
         }
@@ -100,12 +116,31 @@ const ProfileMe = () => {
           return false;
         }
         return true;
-      })
-    );
+      });
+
+      return filteredList.map((post) => {
+        if (post.comments && post.comments.includes(postIdDelete)) {
+          post.comments = post.comments.filter(
+            (commentId) => commentId !== postIdDelete
+          );
+        }
+        return post;
+      });
+    });
   };
 
   const handleCommentProfile = (comment) => {
-    setListPost([comment, ...listPost]);
+    if (comment.isCommentOf && comment.isCommentOf.length > 0) {
+      const updatedList = listPost.map((existingPost) => {
+        if (comment.isCommentOf.includes(existingPost._id)) {
+          existingPost.comments.push(comment._id);
+        }
+        return existingPost;
+      });
+      setListPost([comment, ...updatedList]);
+    } else {
+      setListPost([comment, ...listPost]);
+    }
   };
 
   const handlePhotoAvatarChange = (e) => {
@@ -294,11 +329,17 @@ const ProfileMe = () => {
           </div>
           <p className="biographieMe ml16">{userUpdated.bio}</p>
           <div className="followDivMe ml16">
-            <div className="flex">
+            <div
+              className="flex followingMe"
+              onClick={userUpdated.followers.length > 0 ? goToFollowing : null}
+            >
               <p className="boldB">{userUpdated.following.length}</p>
               <p>Following</p>
             </div>
-            <div className="flex">
+            <div
+              className="flex followerMe"
+              onClick={userUpdated.followers.length > 0 ? goToFollower : null}
+            >
               <p className="boldB">{userUpdated.followers.length}</p>
               <p>Followers</p>
             </div>

@@ -16,6 +16,7 @@ const Post = ({
   userNamePicture,
   setListComment,
   handleDeletePost,
+  postCommentLength,
   postDetail,
   handleCommentProfile,
   setIfComment,
@@ -209,7 +210,6 @@ const Post = ({
               className="linkOtherPost"
               onClick={(e) => {
                 e.stopPropagation();
-                console.log(updatedPost.isCommentOf);
                 navigate(`/Home/Posts/${updatedPost.isCommentOf}`);
               }}
             >
@@ -252,7 +252,7 @@ const Post = ({
               )} */}
               <BiMessageRounded className="replyButton" />
             </div>
-            <p>{updatedPost.comments.length}</p>
+            <p>{post.comments.length}</p>
           </div>
           <div className="divHoverEffectLike">
             <div className="hoverEffectLike">

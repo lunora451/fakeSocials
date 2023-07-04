@@ -158,6 +158,12 @@
   margin: 24px 0 12px 16px;
 }
 
+.followingOther:hover,
+.followerOther:hover {
+  color: #35bfd1;
+  cursor: pointer;
+}
+
 .flex {
   display: flex;
   gap: 4px;

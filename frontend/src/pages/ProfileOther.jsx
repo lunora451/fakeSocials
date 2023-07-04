@@ -27,6 +27,13 @@ const ProfileOther = () => {
   const [userUpdated, setUserUpdated] = useState(user);
   const [follow, setFollow] = useState(isFollow);
 
+  const goToFollowing = () => {
+    navigate(`/Home/WallFollowing/${userUpdated._id}`);
+  };
+  const goToFollower = () => {
+    navigate(`/Home/WallFollower/${userUpdated._id}`);
+  };
+
   const handleFollowButton = async () => {
     if (!follow) {
       //follow
@@ -105,11 +112,17 @@ const ProfileOther = () => {
           </div>
           <p className="biographieOther ml16">{userUpdated.bio}</p>
           <div className="followDiv ml16">
-            <div className="flex">
+            <div
+              className="flex followingOther"
+              onClick={userUpdated.followers.length > 0 ? goToFollowing : null}
+            >
               <p className="boldB">{userUpdated.following.length}</p>
               <p>Following</p>
             </div>
-            <div className="flex">
+            <div
+              className="flex followingOther"
+              onClick={userUpdated.followers.length > 0 ? goToFollower : null}
+            >
               <p className="boldB">{userUpdated.followers.length}</p>
               <p>Followers</p>
             </div>

@@ -211,7 +211,7 @@ router.delete(
       },
     });
 
-    await PostModel.findByIdAndUpdate(postId, {
+    await PostModel.updateMany({
       $pull: {
         comments: postId,
       },

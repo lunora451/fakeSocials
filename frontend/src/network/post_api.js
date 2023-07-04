@@ -6,7 +6,6 @@ export const postMe = async (formDataPoster) => {
     // Récupération du JWT depuis le localStorage
     const token = Cookies.get("jwt");
 
-    console.log(formDataPoster);
     const response = await axios.post(
       `${process.env.REACT_APP_BACKEND_URL}posts/`,
       formDataPoster,
@@ -28,7 +27,6 @@ export const postMe = async (formDataPoster) => {
 };
 
 export const postComment = async (formDataComment) => {
-  // const { author, message, picture, video, postId } = commentInfo;
   try {
     // Récupération du JWT depuis le localStorage
     const token = Cookies.get("jwt");

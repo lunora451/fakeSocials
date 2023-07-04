@@ -19,9 +19,26 @@ const WallLikes = () => {
 
     const postIdDelete = await deletePost(postId);
 
-    setListPostsState((prevListPost) =>
-      prevListPost.filter((post) => post._id !== postIdDelete)
-    );
+    setListPostsState((prevListPost) => {
+      const filteredList = prevListPost.filter((post) => {
+        if (post._id === postIdDelete) {
+          return false;
+        }
+        if (post.isCommentOf && post.isCommentOf[0] === postIdDelete) {
+          return false;
+        }
+        return true;
+      });
+
+      return filteredList.map((post) => {
+        if (post.comments && post.comments.includes(postIdDelete)) {
+          post.comments = post.comments.filter(
+            (commentId) => commentId !== postIdDelete
+          );
+        }
+        return post;
+      });
+    });
   };
 
   return (
