@@ -19,9 +19,9 @@ const PostDetail = () => {
   const [updatedPostDetail, setUpdatedPostDetail] = useState(post);
   const [listComment, setListComment] = useState(updatedPostDetail.comments);
 
-  useEffect(() => {
-    console.log(updatedPostDetail);
-  }, [updatedPostDetail]);
+  // useEffect(() => {
+  //   console.log(updatedPostDetail);
+  // }, [updatedPostDetail]);
 
   const handleDeletePost = async (e, postId) => {
     e.stopPropagation();
@@ -47,24 +47,11 @@ const PostDetail = () => {
   };
 
   const handleCommentProfile = (comment) => {
-    console.log("zejfo");
     setUpdatedPostDetail((prevPostDetail) => {
       const newCommentsList = [comment._id, ...prevPostDetail.comments];
 
       return { ...prevPostDetail, comments: newCommentsList };
     });
-
-    // if (comment.isCommentOf && comment.isCommentOf.length > 0) {
-    //   const updatedList = listPost.map((existingPost) => {
-    //     if (comment.isCommentOf.includes(existingPost._id)) {
-    //       existingPost.comments.push(comment._id);
-    //     }
-    //     return existingPost;
-    //   });
-    //   setListPost([comment, ...updatedList]);
-    // } else {
-    //   setListPost([comment, ...listPost]);
-    // }
   };
 
   return (

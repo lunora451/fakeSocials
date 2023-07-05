@@ -7,8 +7,8 @@ import {
 } from "../network/user_api";
 import { IoCalendarOutline } from "react-icons/io5";
 import "./styles/profileOther.css";
-import defaultAvatar from "../assets/img/avatarDefault.png";
-import defaultWallpaper from "../assets/img/wallpaperDefault.jpg";
+import avatar from "../assets/img/avatarDefault.png";
+import wallpaper from "../assets/img/wallpaperDefault.jpg";
 import Post from "../components/Post";
 import {} from "../network/post_api";
 import { toFormattedDateWithDay } from "../utils/date";
@@ -90,12 +90,24 @@ const ProfileOther = () => {
         </div>
         <div className="headerProfile">
           <img
-            src={defaultWallpaper}
+            src={
+              userUpdated.wallpaper
+                ? `${process.env.REACT_APP_BACKEND_URL}${userUpdated.wallpaper}`
+                : wallpaper
+            }
             alt="wallpaper_profile"
             className="bannerUser"
           />
 
-          <img src={defaultAvatar} alt="avatar_profile" className="avatar" />
+          <img
+            src={
+              userUpdated.picture
+                ? `${process.env.REACT_APP_BACKEND_URL}${userUpdated.picture}`
+                : avatar
+            }
+            alt="avatar_profile"
+            className="avatar"
+          />
 
           <button
             className={follow ? "following" : "notFollowing"}

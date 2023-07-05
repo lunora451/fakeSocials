@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useLoaderData, useOutletContext } from "react-router-dom";
 import Post from "../components/Post";
 import { getAllPosts, deletePost } from "../network/post_api";
@@ -24,6 +24,19 @@ const WallPost = () => {
     );
   };
 
+  const handleCommentProfile = (comment) => {
+    setListPostsState((prevPostState) => {
+      return prevPostState.map((post) => {
+        if (post._id === comment.isCommentOf[0]) {
+          post.comments = [comment._id, ...post.comments];
+          return post;
+        } else {
+          return post;
+        }
+      });
+    });
+  };
+
   return (
     <div className="wallPost">
       <div className="topBannerWallPost">
@@ -35,6 +48,7 @@ const WallPost = () => {
           return (
             <li key={post._id}>
               <Post
+                handleCommentProfile={handleCommentProfile}
                 userNamePicture={userNamePicture}
                 post={post}
                 handleDeletePost={handleDeletePost}
