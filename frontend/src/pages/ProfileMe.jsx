@@ -217,11 +217,7 @@ const ProfileMe = () => {
         </div>
         <div className="headerProfileMe">
           <img
-            src={
-              userUpdated.wallpaper
-                ? `${process.env.REACT_APP_BACKEND_URL}${userUpdated.wallpaper}`
-                : wallpaper
-            }
+            src={userUpdated.wallpaper ? `${userUpdated.wallpaper}` : wallpaper}
             alt="wallpaper_profile"
             className="bannerUserMe"
           />

@@ -9,12 +9,12 @@ const morgan = require("morgan");
 const app = express();
 
 // Third-Party Middleware
-// const corsOptions = {
-//   origin: process.env.FRONT_URL,
-// };
-// app.use(cors(corsOptions));
+const corsOptions = {
+  origin: process.env.FRONT_URL,
+};
+app.use(cors(corsOptions));
 
-app.use(cors()); //when dev
+// app.use(cors()); //when dev
 app.use(morgan("dev"));
 
 // Built-In Middleware

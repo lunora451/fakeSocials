@@ -5,8 +5,12 @@ const PostModel = require("../models/post.models");
 const UserModel = require("../models/user.models");
 const multer = require("multer");
 
-// const storage = multer.memoryStorage();
-const upload = multer({ dest: "uploads/" });
+// const upload = multer({ dest: "uploads/" });
+
+const path = require("path");
+const uploadDestination = path.join(__dirname, "uploads/");
+
+const upload = multer({ dest: uploadDestination });
 
 // Create a new post
 router.post(
