@@ -6,11 +6,15 @@ import "./styles/register.css";
 export async function registerAction({ request, params }) {
   const formData = await request.formData();
   const updates = Object.fromEntries(formData);
-  console.log(updates);
+  showSpinner();
   await registerApi(updates);
   return redirect("../");
 }
 
+function showSpinner() {
+  const spinner = document.querySelector(".lds-roller");
+  spinner.style.display = "inline-block";
+}
 const Register = () => {
   return (
     <div className="registerPage">
@@ -46,6 +50,16 @@ const Register = () => {
             maxLength={55}
             required
           />
+          <div className="lds-roller">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
           <button type="submit">Confirm</button>
         </Form>
       </div>
