@@ -126,7 +126,7 @@ const ProfileOther = () => {
           <div className="followDiv ml16">
             <div
               className="flex followingOther"
-              onClick={userUpdated.followers.length > 0 ? goToFollowing : null}
+              onClick={userUpdated.following.length > 0 ? goToFollowing : null}
             >
               <p className="boldB">{userUpdated.following.length}</p>
               <p>Following</p>
