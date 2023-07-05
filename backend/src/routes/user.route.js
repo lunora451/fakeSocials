@@ -4,12 +4,17 @@ const asyncHandler = require("express-async-handler");
 const UserModel = require("../models/user.models");
 const PostModel = require("../models/post.models");
 const jwt = require("jsonwebtoken");
-const multer = require("multer");
 const bcrypt = require("bcrypt");
 const verifyToken = require("../utils/tokenJwt");
+const multer = require("multer");
 
 // const storage = multer.memoryStorage();
-const upload = multer({ dest: "uploads/" });
+// const upload = multer({ dest: "uploads/" });
+
+const path = require("path");
+const uploadDestination = path.join(__dirname, "uploads/");
+
+const upload = multer({ dest: uploadDestination });
 
 // Create a new user
 router.post(
