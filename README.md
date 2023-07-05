@@ -15,7 +15,11 @@ quelqu'un d'autre que ma personne, bonne visite ^^
 Technologies : 
 
 Stack MERN : 
+
              Authent : jsonWebToken
+
              Bdd: MongoDb 
+
              Backend : Node, Express, Moongoose, jsonWebToken
+
              FrontEnd : React, 
