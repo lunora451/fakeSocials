@@ -14,7 +14,11 @@ const User = ({ user }) => {
   return (
     <div className="userDiv" onClick={(e) => goToProfileUser(e)}>
       <img
-        src={avatar}
+        src={
+          user.picture
+            ? `${process.env.REACT_APP_BACKEND_URL}${user.picture}`
+            : avatar
+        }
         alt="default avatar profil"
         className="avatarUser"
         onClick={(e) => goToProfileUser(e)}
