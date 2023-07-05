@@ -1,10 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  Navigate,
-  useLoaderData,
-  useOutletContext,
-  useNavigate,
-} from "react-router-dom";
+import { useLoaderData, useOutletContext, useNavigate } from "react-router-dom";
 import { getUserById, editUserById } from "../network/user_api";
 import { IoCalendarOutline } from "react-icons/io5";
 import Modal from "react-modal";
@@ -19,6 +14,7 @@ import { RxCross2 } from "react-icons/rx";
 import { TbPhotoPlus } from "react-icons/tb";
 import avatar from "../assets/img/avatarDefault.png";
 import wallpaper from "../assets/img/wallpaperDefault.jpg";
+import { convertToBase64 } from "../utils/base64";
 
 export async function profileMeLoader() {
   const userId = Cookies.get("idUser");
@@ -68,10 +64,8 @@ const ProfileMe = () => {
   };
 
   const concatSortPost = (posts, comments) => {
-    // Concatenate the two arrays
     const combinedPosts = posts.concat(comments);
 
-    // Sort the combined array by createdAt in descending order
     const sortedPosts = combinedPosts.sort((a, b) => {
       const dateA = new Date(a.createdAt);
       const dateB = new Date(b.createdAt);
@@ -88,17 +82,17 @@ const ProfileMe = () => {
   useEffect(() => {}, [listPost]);
 
   const handlePost = async (textPost, picturePoster) => {
-    const formDataPost = new FormData();
-
-    formDataPost.append("author", userUpdated._id);
-    if (textPost != "") {
-      formDataPost.append("message", textPost);
+    let base64 = null;
+    if (picturePoster instanceof File) {
+      base64 = await convertToBase64(picturePoster);
     }
-    if (picturePoster) {
-      formDataPost.append("picture", picturePoster);
-    }
+    const objectPost = {
+      author: userUpdated._id,
+      message: textPost,
+      picture: base64,
+    };
 
-    const post = await postMe(formDataPost);
+    const post = await postMe(objectPost);
 
     setListPost([post, ...listPost]);
   };
@@ -176,23 +170,27 @@ const ProfileMe = () => {
       author: userUpdated._id,
     }));
 
-    const formData = new FormData();
+    const promises = [];
 
-    formData.append("author", userUpdated._id);
-    if (dataEditProfil.pseudo) {
-      formData.append("pseudo", dataEditProfil.pseudo);
-    }
-    if (dataEditProfil.bio) {
-      formData.append("bio", dataEditProfil.bio);
-    }
-    if (dataEditProfil.picture) {
-      formData.append("picture", dataEditProfil.picture);
-    }
-    if (dataEditProfil.wallpaper) {
-      formData.append("wallpaper", dataEditProfil.wallpaper);
+    if (dataEditProfil.picture instanceof File) {
+      promises.push(convertToBase64(dataEditProfil.picture));
     }
 
-    const userEdited = await editUserById(formData);
+    if (dataEditProfil.wallpaper instanceof File) {
+      promises.push(convertToBase64(dataEditProfil.wallpaper));
+    }
+
+    const [pictureBase64, wallpaperBase64] = await Promise.all(promises);
+
+    const objectEditDB = {
+      author: userUpdated._id,
+      pseudo: dataEditProfil.pseudo || null,
+      bio: dataEditProfil.bio || null,
+      picture: pictureBase64 || null,
+      wallpaper: wallpaperBase64 || null,
+    };
+
+    const userEdited = await editUserById(objectEditDB);
 
     if (userEdited.picture) {
       Cookies.set("pictureUser", user.picture);
@@ -223,11 +221,7 @@ const ProfileMe = () => {
           />
 
           <img
-            src={
-              userUpdated.picture
-                ? `${process.env.REACT_APP_BACKEND_URL}${userUpdated.picture}`
-                : avatar
-            }
+            src={userUpdated.picture ? userUpdated.picture : avatar}
             alt="avatar_profile"
             className="avatarMe"
           />
@@ -263,8 +257,7 @@ const ProfileMe = () => {
             <img
               src={
                 wallpaperModal || userUpdated.wallpaper
-                  ? wallpaperModal ||
-                    `${process.env.REACT_APP_BACKEND_URL}${userUpdated.wallpaper}`
+                  ? wallpaperModal || userUpdated.wallpaper
                   : wallpaper
               }
               alt="wallpaper_profile"
@@ -283,8 +276,7 @@ const ProfileMe = () => {
             <img
               src={
                 pictureModal || userUpdated.picture
-                  ? pictureModal ||
-                    `${process.env.REACT_APP_BACKEND_URL}${userUpdated.picture}`
+                  ? pictureModal || userUpdated.picture
                   : avatar
               }
               alt="avatar_profile"

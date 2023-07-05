@@ -1,15 +1,13 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 
-export const editUserById = async (formData) => {
-  // const { author, pseudo, picture, wallpaper, bio } = editProfileObject;
+export const editUserById = async (objectEditDB) => {
   try {
-    // Récupération du JWT depuis le localStorage
     const token = Cookies.get("jwt");
 
-    const response = await axios.patch(
+    const response = await axios.post(
       `${process.env.REACT_APP_BACKEND_URL}users/edit`,
-      formData,
+      objectEditDB,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -29,7 +27,6 @@ export const editUserById = async (formData) => {
 
 export const getOtherUserById = async (id) => {
   try {
-    // Récupération du JWT depuis le localStorage
     const token = Cookies.get("jwt");
     const userId = Cookies.get("idUser");
 
@@ -57,7 +54,6 @@ export const getOtherUserById = async (id) => {
 
 export const getUserById = async (id) => {
   try {
-    // Récupération du JWT depuis le localStorage
     const token = Cookies.get("jwt");
 
     const response = await axios.get(
@@ -81,7 +77,6 @@ export const getUserById = async (id) => {
 
 export const getNamePictureUser = async (id) => {
   try {
-    // Récupération du JWT depuis le localStorage
     const token = Cookies.get("jwt");
 
     const response = await axios.get(
@@ -105,7 +100,6 @@ export const getNamePictureUser = async (id) => {
 
 export const getAllFollowerById = async (id) => {
   try {
-    // Récupération du JWT depuis le localStorage
     const token = Cookies.get("jwt");
 
     const response = await axios.get(
@@ -129,7 +123,6 @@ export const getAllFollowerById = async (id) => {
 
 export const getAllFollowingById = async (id) => {
   try {
-    // Récupération du JWT depuis le localStorage
     const token = Cookies.get("jwt");
 
     const response = await axios.get(
@@ -151,10 +144,8 @@ export const getAllFollowingById = async (id) => {
   }
 };
 
-//followUser
 export const followAccount = async (otherUserId) => {
   try {
-    // Récupération du JWT depuis le localStorage
     const token = Cookies.get("jwt");
     const myUserId = Cookies.get("idUser");
 
@@ -181,10 +172,8 @@ export const followAccount = async (otherUserId) => {
   }
 };
 
-//unFollowUser
 export const unFollowAccount = async (otherUserId) => {
   try {
-    // Récupération du JWT depuis le localStorage
     const token = Cookies.get("jwt");
     const myUserId = Cookies.get("idUser");
 
@@ -222,8 +211,6 @@ export const loginApi = async (loginInfo) => {
       }
     );
     if (response.status === 201) {
-      // Stockage du JWT dans le localStorage
-
       Cookies.set("jwt", response.data.token);
       Cookies.set("idUser", response.data.userId);
 
@@ -270,7 +257,6 @@ export const deleteAccountCall = async () => {
         },
       }
     );
-    console.log(response);
     if (response.status === 200) {
       return response.data;
     } else {

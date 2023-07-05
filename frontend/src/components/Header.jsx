@@ -25,7 +25,6 @@ const Header = ({
 
   const deleteAccount = async () => {
     const response = await deleteAccountCall();
-    console.log(response);
     Cookies.remove("jwt");
     navigate("/");
   };
@@ -132,11 +131,7 @@ const Header = ({
             onClick={(e) => handleOptionAccountButtonVisibility(e)}
           >
             <img
-              src={
-                userNamePicture.picture
-                  ? `${process.env.REACT_APP_BACKEND_URL}${userNamePicture.picture}`
-                  : avatar
-              }
+              src={userNamePicture.picture ? userNamePicture.picture : avatar}
               alt="avatar_profile"
               className="avatarHomeButton"
             />

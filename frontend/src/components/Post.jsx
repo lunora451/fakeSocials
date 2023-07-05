@@ -10,13 +10,13 @@ import { useNavigate } from "react-router-dom";
 import ModalReply from "../components/ModalReply";
 import Cookies from "js-cookie";
 import "./styles/post.css";
+import { convertToBase64 } from "../utils/base64";
 
 const Post = ({
   post,
   userNamePicture,
   setListComment,
   handleDeletePost,
-  postCommentLength,
   postDetail,
   handleCommentProfile,
   setIfComment,
@@ -107,19 +107,17 @@ const Post = ({
   const handleComment = async (e, objectComment) => {
     e.stopPropagation();
 
-    const formDataComment = new FormData();
+    const objectCommentDB = {
+      author: userId,
+      postId: objectComment.postId,
+      isCommentOf: objectComment.postId,
+      message: objectComment.textPost ? objectComment.textPost : null,
+      picture: objectComment.picture
+        ? await convertToBase64(objectComment.picture)
+        : null,
+    };
 
-    formDataComment.append("author", userId);
-    formDataComment.append("postId", objectComment.postId);
-    formDataComment.append("isCommentOf", objectComment.postId);
-    if (objectComment.textPost) {
-      formDataComment.append("message", objectComment.textPost);
-    }
-    if (objectComment.picture) {
-      formDataComment.append("picture", objectComment.picture);
-    }
-
-    const comment = await postComment(formDataComment);
+    const comment = await postComment(objectCommentDB);
 
     if (postDetail) {
       if (setListComment && postDetail._id === objectComment.postId) {
@@ -145,10 +143,10 @@ const Post = ({
         src={
           isUserPost
             ? userNamePicture.picture
-              ? `${process.env.REACT_APP_BACKEND_URL}${userNamePicture.picture}`
+              ? userNamePicture.picture
               : avatar
             : updatedPost.author.picture
-            ? `${process.env.REACT_APP_BACKEND_URL}${updatedPost.author.picture}`
+            ? updatedPost.author.picture
             : avatar
         }
         alt="default avatar profil"
@@ -219,11 +217,7 @@ const Post = ({
         ) : null}
 
         <img
-          src={
-            updatedPost.picture
-              ? `${process.env.REACT_APP_BACKEND_URL}${updatedPost.picture}`
-              : null
-          }
+          src={updatedPost.picture ? updatedPost.picture : null}
           alt="post"
           className="picturePost"
           id={updatedPost.picture ? "showBlock" : "hide"}
@@ -247,9 +241,6 @@ const Post = ({
               className="hoverEffectReply"
               onClick={(e) => openModalReply(e)}
             >
-              {/* {showModalReply && (
-                
-              )} */}
               <BiMessageRounded className="replyButton" />
             </div>
             <p>{post.comments.length}</p>

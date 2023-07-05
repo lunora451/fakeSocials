@@ -6,15 +6,6 @@ const PostModel = require("../models/post.models");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const verifyToken = require("../utils/tokenJwt");
-const multer = require("multer");
-
-// const storage = multer.memoryStorage();
-// const upload = multer({ dest: "uploads/" });
-
-const path = require("path");
-const uploadDestination = path.join(__dirname, "uploads/");
-
-const upload = multer({ dest: uploadDestination });
 
 // Create a new user
 router.post(
@@ -31,7 +22,6 @@ router.post(
     res.status(201).json(user);
   })
 );
-// process.env.
 
 // Connexion
 router.post(
@@ -80,7 +70,7 @@ router.get(
       .populate({
         path: "comments",
         options: {
-          sort: { createdAt: -1 }, // Sort by createdAt in descending order
+          sort: { createdAt: -1 },
         },
         populate: {
           path: "author",
@@ -188,22 +178,14 @@ router.get(
 );
 
 // Update a user by ID
-router.patch(
+router.post(
   "/edit",
   verifyToken,
-  upload.fields([{ name: "picture" }, { name: "wallpaper" }]),
   asyncHandler(async (req, res) => {
-    const { author, pseudo, bio } = req.body;
+    const { author, pseudo, bio, picture, wallpaper } = req.body;
 
-    console.log(req.files);
-
-    const picture = req.files.picture ? req.files.picture[0].path : null;
-    const wallpaper = req.files.wallpaper ? req.files.wallpaper[0].path : null;
-
-    // Build the update object with only the provided values
     const update = {};
     if (pseudo) {
-      console.log(pseudo);
       update.pseudo = pseudo;
     }
     if (picture) {

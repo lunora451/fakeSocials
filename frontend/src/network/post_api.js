@@ -1,14 +1,14 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 
-export const postMe = async (formDataPoster) => {
+export const postMe = async (objectPost) => {
   try {
-    // Récupération du JWT depuis le localStorage
     const token = Cookies.get("jwt");
 
     const response = await axios.post(
       `${process.env.REACT_APP_BACKEND_URL}posts/`,
-      formDataPoster,
+      objectPost,
+
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -26,14 +26,13 @@ export const postMe = async (formDataPoster) => {
   }
 };
 
-export const postComment = async (formDataComment) => {
+export const postComment = async (objectComment) => {
   try {
-    // Récupération du JWT depuis le localStorage
     const token = Cookies.get("jwt");
 
     const response = await axios.post(
       `${process.env.REACT_APP_BACKEND_URL}posts/comment`,
-      formDataComment,
+      objectComment,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -53,7 +52,6 @@ export const postComment = async (formDataComment) => {
 
 export const likePost = async (postId) => {
   try {
-    // Récupération du JWT depuis le localStorage
     const token = Cookies.get("jwt");
     const myUserId = Cookies.get("idUser");
 
@@ -82,7 +80,6 @@ export const likePost = async (postId) => {
 
 export const unLikePost = async (postId) => {
   try {
-    // Récupération du JWT depuis le localStorage
     const token = Cookies.get("jwt");
     const myUserId = Cookies.get("idUser");
 
@@ -111,7 +108,6 @@ export const unLikePost = async (postId) => {
 
 export const deletePost = async (postId) => {
   try {
-    // Récupération du JWT depuis le localStorage
     const token = Cookies.get("jwt");
     const userId = Cookies.get("idUser");
 
@@ -138,7 +134,6 @@ export const deletePost = async (postId) => {
 
 export const getPostDetail = async (postId) => {
   try {
-    // Récupération du JWT depuis le localStorage
     const token = Cookies.get("jwt");
 
     const response = await axios.get(
@@ -161,7 +156,6 @@ export const getPostDetail = async (postId) => {
 
 export const getAllPosts = async () => {
   try {
-    // Récupération du JWT depuis le localStorage
     const token = Cookies.get("jwt");
 
     const response = await axios.get(
@@ -185,7 +179,6 @@ export const getAllPosts = async () => {
 
 export const getAllLikes = async (userId) => {
   try {
-    // Récupération du JWT depuis le localStorage
     const token = Cookies.get("jwt");
 
     const response = await axios.get(

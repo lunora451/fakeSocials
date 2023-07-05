@@ -8,7 +8,6 @@ import Cookies from "js-cookie";
 export const homeLoader = async () => {
   const userId = Cookies.get("idUser");
   const userNameAndPicture = await getNamePictureUser(userId);
-  console.log(userNameAndPicture);
   return { userNameAndPicture };
 };
 

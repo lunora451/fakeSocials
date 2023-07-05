@@ -3,23 +3,13 @@ const express = require("express");
 const router = express.Router();
 const PostModel = require("../models/post.models");
 const UserModel = require("../models/user.models");
-const multer = require("multer");
-
-// const upload = multer({ dest: "uploads/" });
-
-const path = require("path");
-const uploadDestination = path.join(__dirname, "uploads/");
-
-const upload = multer({ dest: uploadDestination });
 
 // Create a new post
 router.post(
   "/",
-  upload.single("picture"),
   asyncHandler(async (req, res) => {
-    const { author, message } = req.body;
+    const { author, message, picture } = req.body;
 
-    const picture = req.file ? req.file.path : null;
     const post = await PostModel.create({
       author,
       message,
@@ -35,11 +25,9 @@ router.post(
 //create post who is a comment
 router.post(
   "/comment",
-  upload.single("picture"),
   asyncHandler(async (req, res) => {
-    const { postId, author, message, isCommentOf } = req.body;
+    const { postId, author, message, isCommentOf, picture } = req.body;
 
-    const picture = req.file ? req.file.path : null;
     const post = await PostModel.create({
       author,
       message,
@@ -89,7 +77,6 @@ router.get(
       })
       .exec();
 
-    console.log(listPostsLikes);
     if (!listPostsLikes.likes) {
       return res.status(404).json({ error: "Post not found" });
     }
@@ -200,7 +187,6 @@ router.delete(
       return res.status(404).json({ error: "Post not found" });
     }
 
-    // Update the references in other documents
     await UserModel.findByIdAndUpdate(userId, {
       $pull: {
         posts: postId,
@@ -221,7 +207,6 @@ router.delete(
       },
     });
 
-    //Update the references in other posts' comments
     await PostModel.deleteMany({ isCommentOf: postId });
 
     res.json(postId);

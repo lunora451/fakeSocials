@@ -19,10 +19,6 @@ const PostDetail = () => {
   const [updatedPostDetail, setUpdatedPostDetail] = useState(post);
   const [listComment, setListComment] = useState(updatedPostDetail.comments);
 
-  // useEffect(() => {
-  //   console.log(updatedPostDetail);
-  // }, [updatedPostDetail]);
-
   const handleDeletePost = async (e, postId) => {
     e.stopPropagation();
 

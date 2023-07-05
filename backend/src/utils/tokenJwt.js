@@ -18,7 +18,6 @@ const verifyToken = (req, res, next) => {
     }
     next();
   } catch (error) {
-    console.error("Erreur de vérification du JWT :", error);
     return res.status(401).json({ message: "Token invalide" });
   }
 };

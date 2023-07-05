@@ -15,10 +15,6 @@ const Poster = ({ user, handlePost }) => {
   const spanRef = useRef(null);
   const inputRef = useRef(null);
 
-  const searchPicture = () => {
-    //photoPicker
-  };
-
   useEffect(() => {
     const isButtonEnabled = characterCount !== 0 || picturePoster !== null;
     setButtonPostEnable(isButtonEnabled);
@@ -27,7 +23,6 @@ const Poster = ({ user, handlePost }) => {
   const handlePhotoPosterChange = (e) => {
     const name = e.target.name;
     const file = e.target.files[0];
-    console.log("file");
 
     if (!(file === typeof undefined)) {
       if (name === "picture") {
@@ -45,11 +40,7 @@ const Poster = ({ user, handlePost }) => {
     <div className="poster">
       <div className="imgUser">
         <img
-          src={
-            user.picture
-              ? `${process.env.REACT_APP_BACKEND_URL}${user.picture}`
-              : avatar
-          }
+          src={user.picture ? user.picture : avatar}
           alt="default avatar profil"
           className="avatarPoster"
         />
@@ -93,7 +84,7 @@ const Poster = ({ user, handlePost }) => {
         <div className="optionPost">
           <div>
             <label htmlFor="imagePoster" className="labelPhotoPoster">
-              <TbPhotoPlus className="photoAddPost" onClick={searchPicture} />
+              <TbPhotoPlus className="photoAddPost" />
               <label />
               <input
                 id="imagePoster"

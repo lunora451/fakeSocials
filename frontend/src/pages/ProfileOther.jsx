@@ -10,7 +10,6 @@ import "./styles/profileOther.css";
 import avatar from "../assets/img/avatarDefault.png";
 import wallpaper from "../assets/img/wallpaperDefault.jpg";
 import Post from "../components/Post";
-import {} from "../network/post_api";
 import { toFormattedDateWithDay } from "../utils/date";
 import { FaArrowLeft } from "react-icons/fa";
 
@@ -55,10 +54,8 @@ const ProfileOther = () => {
   };
 
   const concatSortPost = (posts, comments) => {
-    // Concatenate the two arrays
     const combinedPosts = posts.concat(comments);
 
-    // Sort the combined array by createdAt in descending order
     const sortedPosts = combinedPosts.sort((a, b) => {
       const dateA = new Date(a.createdAt);
       const dateB = new Date(b.createdAt);
@@ -90,21 +87,13 @@ const ProfileOther = () => {
         </div>
         <div className="headerProfile">
           <img
-            src={
-              userUpdated.wallpaper
-                ? `${process.env.REACT_APP_BACKEND_URL}${userUpdated.wallpaper}`
-                : wallpaper
-            }
+            src={userUpdated.wallpaper ? userUpdated.wallpaper : wallpaper}
             alt="wallpaper_profile"
             className="bannerUser"
           />
 
           <img
-            src={
-              userUpdated.picture
-                ? `${process.env.REACT_APP_BACKEND_URL}${userUpdated.picture}`
-                : avatar
-            }
+            src={userUpdated.picture ? userUpdated.picture : avatar}
             alt="avatar_profile"
             className="avatar"
           />
