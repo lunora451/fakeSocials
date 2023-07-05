@@ -259,7 +259,7 @@ const ProfileMe = () => {
               <input
                 id="wallpaperProfil"
                 type="file"
-                accept="image/*"
+                accept="image/jpeg, image/gif, image/png, image/webp"
                 name="wallpaper"
                 onChange={handlePhotoAvatarChange}
               />
@@ -280,7 +280,7 @@ const ProfileMe = () => {
             <input
               id="photoProfil"
               type="file"
-              accept="image/*"
+              accept="image/jpeg, image/gif, image/png, image/webp"
               name="picture"
               onChange={handlePhotoAvatarChange}
             />
