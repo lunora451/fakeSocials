@@ -8,8 +8,14 @@ import "./styles/login.css";
 async function loginAction({ request }) {
   const formData = await request.formData();
   const loginInfo = Object.fromEntries(formData);
+  showSpinner();
   await loginApi(loginInfo);
   return redirect(`/Home/Profile/me`);
+}
+
+function showSpinner() {
+  const spinner = document.querySelector(".lds-roller");
+  spinner.style.display = "inline-block";
 }
 
 const Login = () => {
@@ -55,6 +61,16 @@ const Login = () => {
           </div>
           <button type="submit">Connect</button>
         </Form>
+        <div className="lds-roller">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
 
         <p>
           You are not registered yet?{" "}
