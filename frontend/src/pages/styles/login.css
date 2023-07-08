@@ -57,6 +57,13 @@
   width: 75px;
 }
 
+.registerPickline {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+}
+
 .lds-roller {
   display: none;
   position: relative;
@@ -140,5 +147,35 @@
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 750px) {
+  .loginPage {
+    top: 0;
+  }
+  .connexionContainer {
+    margin: 10px;
+  }
+
+  .connexionContainer > form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .connexionContainer > form > div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .connexionContainer > form > div > input {
+    flex: 1;
+  }
+
+  .buttonLoginForm {
+    align-self: center;
   }
 }

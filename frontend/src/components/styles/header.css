@@ -7,6 +7,7 @@
   color: #0f1419;
   max-width: 600px;
   height: 100vh;
+  z-index: 5;
 }
 
 .sidebarContent {
@@ -17,7 +18,7 @@
   height: 100vh;
 }
 
-.sidebarContent > ul {
+.menuHeader {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -31,6 +32,7 @@
 }
 
 .sidebar a {
+  display: flex;
   border: 1px solid transparent;
   transition: border-color 0.25s;
   transition: background-color 0.25s;
@@ -169,6 +171,93 @@
   animation: rotateAnimation 3s linear infinite;
 }
 
+.containerBurger {
+  display: none;
+}
+
+/* burger menu */
+@media (max-width: 730px) {
+  .containerBurger {
+    display: block;
+    color: #36454f;
+  }
+
+  .sidebar a:hover {
+    background: none;
+    border-color: transparent;
+  }
+  .subContainerBurger {
+    margin: auto;
+    position: relative;
+    top: 4px;
+    font-size: xx-large;
+    border-right: 1px solid transparent;
+    border-top: 1px solid transparent;
+    border-left: 1px solid transparent;
+  }
+
+  .optionHeader > a {
+    border-radius: 0% !important;
+  }
+
+  .subContainerBurgerChecked {
+    background-color: white;
+    color: #27cfff;
+    border-radius: 5px 5px 0 0;
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+  }
+
+  #toggle {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    opacity: 0;
+    cursor: pointer;
+    height: 33px;
+  }
+
+  #toggle:checked ~ ul {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  .subContainerBurgerChecked ul {
+    border-radius: 0 0 5px 5px;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+  }
+
+  .subContainerBurger ul {
+    width: 34px;
+    padding-left: 0;
+    margin-top: 0;
+    background: #ffffff;
+    list-style: none;
+    overflow: hidden;
+    right: 10px;
+    text-align: right;
+    text-align: center;
+    transition: all 0.4s ease-out;
+    position: fixed;
+  }
+
+  .subContainerBurger li:hover {
+    background-color: black;
+    color: white;
+  }
+  .subContainerBurger ul a {
+    display: block;
+    color: inherit;
+    text-transform: lowercase;
+    font-weight: 200;
+    text-decoration: none;
+  }
+}
 @keyframes rotateAnimation {
   0% {
     transform: rotateY(0deg);
@@ -205,28 +294,52 @@
   }
 }
 
-@media (max-width: 750px) {
-  .svgArrowBot {
-    visibility: hidden;
+@media (max-width: 730px) {
+  .homePage {
+    flex-direction: column;
+    align-items: stretch !important;
+  }
+  .sidebar {
+    position: relative;
+    max-width: none;
+    padding: 0 10px;
+    align-items: center;
+    border-bottom: 1px solid black;
+  }
+  .sidebarContent {
+    flex-direction: row-reverse;
+    align-items: center;
+    height: fit-content;
+    flex: 1;
+  }
+
+  .socials {
+    flex-direction: initial;
   }
   .sidebar > * {
-    margin: 10px;
+    margin: 0;
   }
   .optionHome {
-    padding: 4px 4px 4px 4px;
-    border-radius: 50%;
+    margin: 0;
   }
-}
-@media (max-width: 650px) {
-  .sidebar > * {
-    margin: 6px;
+  .svgArrowBot {
+    display: none;
   }
-}
-
-@media (max-width: 650px) {
   .modalOption {
     position: fixed;
-    bottom: 50px;
-    top: initial;
+    top: 42px;
+  }
+  .menuHeader {
+    display: none;
+  }
+
+  .logout {
+    border-top: 1px solid transparent;
+  }
+  .deleteAccount {
+    border-bottom: 1px solid gray;
+  }
+  .deleteAccount:hover {
+    border-bottom: 1px solid gray;
   }
 }

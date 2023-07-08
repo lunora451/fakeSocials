@@ -2,7 +2,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  width: 100%;
+  max-width: 100%;
   padding: 12px 12px 4px 12px;
   border-bottom: 1px solid rgb(197, 197, 197);
   transition: background-color 0.2s ease;
@@ -34,6 +34,7 @@
 
 .upperPost {
   display: flex;
+  align-items: center;
   justify-content: space-between;
 }
 
@@ -42,7 +43,6 @@
   display: flex;
   justify-content: flex-start;
   gap: 8px;
-  margin-bottom: 8px;
 }
 
 .usernamePost {
@@ -235,6 +235,9 @@
   margin-top: 24px;
   margin-left: 16px;
   margin-bottom: 12px;
-  max-width: 500px;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
   border-radius: 16px;
+  align-self: center;
 }

@@ -28,7 +28,7 @@ const Login = () => {
   useEffect(() => {
     document.getElementById(
       "root"
-    ).style.background = `url(${backgroundImage})`;
+    ).style.background = `url(${backgroundImage}) no-repeat center fixed `;
     document.getElementById("root").style.backgroundSize = "cover";
   }, []);
 
@@ -36,7 +36,7 @@ const Login = () => {
     <div className="loginPage">
       <div className="connexionContainer">
         <h1>Sign in</h1>
-        <Form method="post">
+        <Form method="post" className="formLogin">
           <div>
             <label htmlFor="pseudo">Pseudo</label>
             <input
@@ -59,7 +59,9 @@ const Login = () => {
               required
             />
           </div>
-          <button type="submit">Connect</button>
+          <button type="submit" className="buttonLoginForm">
+            Connect
+          </button>
         </Form>
         <div className="lds-roller">
           <div></div>
@@ -72,8 +74,8 @@ const Login = () => {
           <div></div>
         </div>
 
-        <p>
-          You are not registered yet?{" "}
+        <p className="registerPickline">
+          You are not registered yet?
           <button onClick={navigateToRegisterPage}>Register</button>{" "}
         </p>
 

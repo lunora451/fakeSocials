@@ -1,6 +1,7 @@
-import { React } from "react";
+import { React, useEffect } from "react";
 import { registerApi } from "../network/user_api";
 import { redirect, Form } from "react-router-dom";
+import backgroundImage from "../assets/img/network.webp";
 import "./styles/register.css";
 
 export async function registerAction({ request, params }) {
@@ -16,6 +17,13 @@ function showSpinner() {
   spinner.style.display = "inline-block";
 }
 const Register = () => {
+  useEffect(() => {
+    document.getElementById(
+      "root"
+    ).style.background = `url(${backgroundImage}) no-repeat center fixed `;
+    document.getElementById("root").style.backgroundSize = "cover";
+  }, []);
+
   return (
     <div className="registerPage">
       <div className="containerRegister">
@@ -60,7 +68,9 @@ const Register = () => {
             <div></div>
             <div></div>
           </div>
-          <button type="submit">Confirm</button>
+          <button type="submit" className="buttonRegisterForm">
+            Confirm
+          </button>
         </Form>
       </div>
     </div>

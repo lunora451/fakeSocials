@@ -5,7 +5,7 @@
 }
 
 main {
-  width: 600px;
+  max-width: 600px;
   min-height: 100vh;
   border-left: 1px solid rgb(197, 197, 197);
   border-right: 1px solid rgb(197, 197, 197);
@@ -15,20 +15,18 @@ main {
   flex: 1;
 }
 
-@media (max-width: 650px) {
+@media (max-width: 730px) {
   main {
     min-width: 400px;
+    max-width: none;
+  }
+  .secondaryMenu {
+    width: 0;
   }
 }
 
 @media (max-width: 550px) {
   main {
-    min-width: 400px;
-  }
-}
-
-@media (max-width: 550px) {
-  * {
-    font-size: medium;
+    min-width: 300px;
   }
 }

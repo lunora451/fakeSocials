@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import "./styles/header.css";
 import { RxHome } from "react-icons/rx";
@@ -10,12 +10,14 @@ import { deleteAccountCall } from "../network/user_api";
 import { RiArrowDownSFill } from "react-icons/ri";
 import { FaPeopleArrows } from "react-icons/fa";
 import { SiLinkedin, SiGithub } from "react-icons/si";
+import { BiMenu } from "react-icons/bi";
 
 const Header = ({
   handleOptionAccountButtonVisibility,
   showOptionAccount,
   userNamePicture,
 }) => {
+  const [burgerMenu, setBurgerMenu] = useState(false);
   const navigate = useNavigate();
   const userId = Cookies.get("idUser");
   const logoutAccount = () => {
@@ -29,10 +31,87 @@ const Header = ({
     navigate("/");
   };
 
+  // const toggle = (e) => {};
+
   return (
     <nav className="sidebar">
       <div className="sidebarContent">
-        <ul>
+        <div className="containerBurger">
+          <div
+            className={
+              burgerMenu
+                ? "subContainerBurger"
+                : "subContainerBurger subContainerBurgerChecked"
+            }
+          >
+            <input
+              id="toggle"
+              type="checkbox"
+              onChange={(e) => setBurgerMenu(e.target.checked)}
+              checked={burgerMenu}
+            />
+            <BiMenu className="burgerMenu" />
+            <ul className="menuHeaderBurger">
+              <li className="headerHome optionHeader">
+                <NavLink
+                  to={"/Home/Profile/me"}
+                  className={({ isActive, isPending }) =>
+                    isPending ? "pending" : isActive ? "active" : ""
+                  }
+                >
+                  <RxHome />
+                  <p>Home</p>
+                </NavLink>
+              </li>
+              <li className="headerWall optionHeader">
+                <NavLink
+                  to={"/Home/WallPost"}
+                  className={({ isActive, isPending }) =>
+                    isPending ? "pending" : isActive ? "active" : ""
+                  }
+                >
+                  <AiOutlineMessage />
+                  <p>Wall Posts</p>
+                </NavLink>
+              </li>
+              <li className="headerFollowers optionHeader">
+                <NavLink
+                  to={`/Home/WallFollower/${userId}`}
+                  className={({ isActive, isPending }) =>
+                    isPending ? "pending" : isActive ? "active" : ""
+                  }
+                >
+                  <FaPeopleArrows />
+                  <p>My Followers</p>
+                </NavLink>
+              </li>
+              <li className="headerMyFollowing optionHeader">
+                <NavLink
+                  to={`/Home/WallFollowing/${userId}`}
+                  className={({ isActive, isPending }) =>
+                    isPending ? "pending" : isActive ? "active" : ""
+                  }
+                >
+                  <BsPeopleFill />
+                  <p>My Following</p>
+                </NavLink>
+              </li>
+              <li className="headerMyLikes optionHeader">
+                <NavLink
+                  to={`/Home/WallLikes/${userId}`}
+                  className={({ isActive, isPending }) =>
+                    isPending ? "pending" : isActive ? "active" : ""
+                  }
+                >
+                  <AiFillHeart />
+                  <p>My Likes</p>
+                </NavLink>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <ul className="menuHeader">
           <li className="headerHome optionHeader">
             <NavLink
               to={"/Home/Profile/me"}
