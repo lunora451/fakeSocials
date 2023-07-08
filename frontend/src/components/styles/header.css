@@ -187,6 +187,7 @@
     border-color: transparent;
   }
   .subContainerBurger {
+    width: 33px;
     margin: auto;
     position: relative;
     top: 4px;
@@ -201,6 +202,7 @@
   }
 
   .subContainerBurgerChecked {
+    width: 33px;
     background-color: white;
     color: #27cfff;
     border-radius: 5px 5px 0 0;
@@ -226,6 +228,7 @@
   }
 
   .subContainerBurgerChecked ul {
+    width: 33px;
     border-radius: 0 0 5px 5px;
     border-right: 1px solid black;
     border-bottom: 1px solid black;
@@ -233,7 +236,7 @@
   }
 
   .subContainerBurger ul {
-    width: 34px;
+    width: 33px;
     padding-left: 0;
     margin-top: 0;
     background: #ffffff;
@@ -244,6 +247,9 @@
     text-align: center;
     transition: all 0.4s ease-out;
     position: fixed;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
   }
 
   .subContainerBurger li:hover {
