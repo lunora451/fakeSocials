@@ -17,7 +17,7 @@ const Header = ({
   showOptionAccount,
   userNamePicture,
 }) => {
-  const [burgerMenu, setBurgerMenu] = useState(false);
+  const [burgerMenu, setBurgerMenu] = useState(true);
   const navigate = useNavigate();
   const userId = Cookies.get("idUser");
   const logoutAccount = () => {
