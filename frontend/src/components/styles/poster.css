@@ -145,7 +145,10 @@
   position: relative;
   margin: 24px 0px 24px 0px;
   right: 26px;
-  max-width: 515px;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 16px;
 }
 
 #imagePoster {

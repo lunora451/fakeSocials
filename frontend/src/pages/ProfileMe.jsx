@@ -243,45 +243,49 @@ const ProfileMe = () => {
                 Save
               </button>
             </div>
-            <label htmlFor="wallpaperProfil" className="labelFileWallpaper">
-              <TbPhotoPlus className="iconChangeWallpaper" />
-              <label />
+            <div className="containerWallpaperEdit">
+              <label htmlFor="wallpaperProfil" className="labelFileWallpaper">
+                <TbPhotoPlus className="iconChangeWallpaper" />
+                <label />
+                <input
+                  id="wallpaperProfil"
+                  type="file"
+                  accept="image/jpeg, image/gif, image/png, image/webp"
+                  name="wallpaper"
+                  onChange={handlePhotoAvatarChange}
+                />
+              </label>
+              <img
+                src={
+                  wallpaperModal || userUpdated.wallpaper
+                    ? wallpaperModal || userUpdated.wallpaper
+                    : wallpaper
+                }
+                alt="wallpaper_profile"
+                className="bannerUserEditProfileMe"
+              />
+            </div>
+            <div className="containerProfilEdit">
+              <label htmlFor="photoProfil" className="labelFileAvatar">
+                <TbPhotoPlus className="iconChangeAvatar" />
+              </label>
               <input
-                id="wallpaperProfil"
+                id="photoProfil"
                 type="file"
                 accept="image/jpeg, image/gif, image/png, image/webp"
-                name="wallpaper"
+                name="picture"
                 onChange={handlePhotoAvatarChange}
               />
-            </label>
-            <img
-              src={
-                wallpaperModal || userUpdated.wallpaper
-                  ? wallpaperModal || userUpdated.wallpaper
-                  : wallpaper
-              }
-              alt="wallpaper_profile"
-              className="bannerUserEditProfileMe"
-            />
-            <label htmlFor="photoProfil" className="labelFileAvatar">
-              <TbPhotoPlus className="iconChangeAvatar" />
-            </label>
-            <input
-              id="photoProfil"
-              type="file"
-              accept="image/jpeg, image/gif, image/png, image/webp"
-              name="picture"
-              onChange={handlePhotoAvatarChange}
-            />
-            <img
-              src={
-                pictureModal || userUpdated.picture
-                  ? pictureModal || userUpdated.picture
-                  : avatar
-              }
-              alt="avatar_profile"
-              className="avatarEditProfileMe"
-            />
+              <img
+                src={
+                  pictureModal || userUpdated.picture
+                    ? pictureModal || userUpdated.picture
+                    : avatar
+                }
+                alt="avatar_profile"
+                className="avatarEditProfileMe"
+              />
+            </div>
             <form className="formEditProfil">
               <label htmlFor="editUsernameProfile">Username</label>
               <input

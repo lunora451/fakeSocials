@@ -227,13 +227,13 @@
   background-color: var(--colorBackgroundButtonHover);
 }
 .ReactModal__Overlay {
-  z-index: 3;
+  z-index: 5;
   background-color: rgb(143 143 143 / 75%) !important;
 }
 
 .picturePost {
   margin-top: 24px;
-  margin-left: 16px;
+  margin-right: 24px;
   margin-bottom: 12px;
   max-width: 100%;
   height: auto;

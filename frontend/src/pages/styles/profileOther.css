@@ -188,27 +188,6 @@
   z-index: 2;
 }
 
-.editProfileModal {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: stretch;
-
-  position: absolute;
-  padding: 12px 3px 12px 3px;
-  width: 600px;
-  background-color: white;
-  border: black;
-  border-radius: 16px;
-  top: 40%;
-  left: 50%;
-  right: auto;
-  bottom: auto;
-
-  transform: translate(-50%, -50%);
-  z-index: 3;
-}
-
 .topBannerEditProfil {
   display: flex;
   justify-content: flex-start;

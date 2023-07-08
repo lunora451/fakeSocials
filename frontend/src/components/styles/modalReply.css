@@ -14,9 +14,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: stretch;
-  position: absolute;
+  position: relative;
   padding: 12px 3px 12px 3px;
-  width: 600px;
+  max-width: clamp(320px, 600px, 700px);
   background-color: white;
   border: 2px solid black;
   border-radius: 16px;
@@ -37,6 +37,11 @@
   padding: 12px 12px 4px 12px;
   border-bottom: 1px solid rgb(197, 197, 197);
   transition: background-color 0.2s ease;
+}
+
+.replyPostModal {
+  position: relative;
+  top: 43%;
 }
 
 .avatarPostReply {
@@ -134,6 +139,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .photoAddPostReply {
@@ -229,4 +235,10 @@
   transition: border-color 0.2s ease;
   pointer-events: none;
   opacity: 0.6;
+}
+
+@media (max-width: 340px) {
+  .attachment {
+    max-width: 140px;
+  }
 }
