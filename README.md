@@ -2,9 +2,13 @@
 
 https://fakesocials.onrender.com
 
-updateInfo : 5 juillet 2023
+update : 8 juillet 2023
 
-update: les images par liens s'effaçaient avec le webService qui tombait en inactivité due à la gratuité du service,
+responsive is up
+
+update : 5 juillet 2023
+
+les images par liens s'effaçaient avec le webService qui tombait en inactivité due à la gratuité du service,
 en passant tout en base64 l'ensemble des requete performant des images et devenus plus lent :/
 
 Petit disclaimer si jamais des personnes passeraient par là :)
