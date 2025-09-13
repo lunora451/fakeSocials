@@ -1,10 +1,14 @@
 # fakeSocials
+compte pour utilisation rapide: Login: Jordan Troussicot mdp: admin123
+
+Edit 13/09/2025: design et code kitch a souhait mais bon souvenir du projet qui m'a permis 
+une meilleur compréhension l'ensemble du fonctionnement d'un projet bout en bout (front to back to hosting)
 
 https://fakesocials.onrender.com
 
 update : 8 juillet 2023
 
-responsive is up
+responsive is up (edit 2025: horrible :)
 
 update : 5 juillet 2023
 
