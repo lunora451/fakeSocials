@@ -195,17 +195,23 @@ router.delete(
       },
     });
 
-    await UserModel.updateMany({
-      $pull: {
-        likes: postId,
-      },
-    });
+    await UserModel.updateMany(
+      { likes: postId },
+      {
+        $pull: {
+          likes: postId,
+        },
+      }
+    );
 
-    await PostModel.updateMany({
-      $pull: {
-        comments: postId,
-      },
-    });
+    await PostModel.updateMany(
+      { comments: postId },
+      {
+        $pull: {
+          comments: postId,
+        },
+      }
+    );
 
     await PostModel.deleteMany({ isCommentOf: postId });
 

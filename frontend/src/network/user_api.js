@@ -1,12 +1,15 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 
+//${process.env.REACT_APP_BACKEND_URL}
+//https://fakesocialsapi.onrender.com/
+
 export const editUserById = async (objectEditDB) => {
   try {
     const token = Cookies.get("jwt");
 
     const response = await axios.post(
-      `${process.env.REACT_APP_BACKEND_URL}users/edit`,
+      `https://fakesocialsapi.onrender.com/users/edit`,
       objectEditDB,
       {
         headers: {
@@ -31,7 +34,7 @@ export const getOtherUserById = async (id) => {
     const userId = Cookies.get("idUser");
 
     const response = await axios.get(
-      `${process.env.REACT_APP_BACKEND_URL}users/other/${id}`,
+      `https://fakesocialsapi.onrender.com/users/other/${id}`,
       {
         params: {
           userId: userId,
@@ -57,7 +60,7 @@ export const getUserById = async (id) => {
     const token = Cookies.get("jwt");
 
     const response = await axios.get(
-      `${process.env.REACT_APP_BACKEND_URL}users/${id}`,
+      `https://fakesocialsapi.onrender.com/users/${id}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -80,7 +83,7 @@ export const getNamePictureUser = async (id) => {
     const token = Cookies.get("jwt");
 
     const response = await axios.get(
-      `${process.env.REACT_APP_BACKEND_URL}users/name/${id}`,
+      `https://fakesocialsapi.onrender.com/users/name/${id}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -103,7 +106,7 @@ export const getAllFollowerById = async (id) => {
     const token = Cookies.get("jwt");
 
     const response = await axios.get(
-      `${process.env.REACT_APP_BACKEND_URL}users/follower/${id}`,
+      `https://fakesocialsapi.onrender.com/users/follower/${id}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -126,7 +129,7 @@ export const getAllFollowingById = async (id) => {
     const token = Cookies.get("jwt");
 
     const response = await axios.get(
-      `${process.env.REACT_APP_BACKEND_URL}users/following/${id}`,
+      `https://fakesocialsapi.onrender.com/users/following/${id}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -150,7 +153,7 @@ export const followAccount = async (otherUserId) => {
     const myUserId = Cookies.get("idUser");
 
     const response = await axios.patch(
-      `${process.env.REACT_APP_BACKEND_URL}users/follow`,
+      `https://fakesocialsapi.onrender.com/users/follow`,
       {
         otherUserId: otherUserId,
         myUserId: myUserId,
@@ -178,7 +181,7 @@ export const unFollowAccount = async (otherUserId) => {
     const myUserId = Cookies.get("idUser");
 
     const response = await axios.patch(
-      `${process.env.REACT_APP_BACKEND_URL}users/unfollow`,
+      `https://fakesocialsapi.onrender.com/users/unfollow`,
       {
         otherUserId: otherUserId,
         myUserId: myUserId,
@@ -204,7 +207,7 @@ export const loginApi = async (loginInfo) => {
   const { pseudo, password } = loginInfo;
   try {
     const response = await axios.post(
-      `${process.env.REACT_APP_BACKEND_URL}users/login`,
+      `https://fakesocialsapi.onrender.com/users/login`,
       {
         pseudo,
         password,
@@ -228,7 +231,7 @@ export const registerApi = async (registerInfo) => {
 
   try {
     const response = await axios.post(
-      `${process.env.REACT_APP_BACKEND_URL}users/register`,
+      `https://fakesocialsapi.onrender.com/users/register`,
       {
         pseudo,
         email,
@@ -250,7 +253,7 @@ export const deleteAccountCall = async () => {
     const myUserId = Cookies.get("idUser");
 
     const response = await axios.delete(
-      `${process.env.REACT_APP_BACKEND_URL}users/delete/${myUserId}`,
+      `https://fakesocialsapi.onrender.com/users/delete/${myUserId}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,

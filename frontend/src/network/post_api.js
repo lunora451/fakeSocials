@@ -6,7 +6,7 @@ export const postMe = async (objectPost) => {
     const token = Cookies.get("jwt");
 
     const response = await axios.post(
-      `${process.env.REACT_APP_BACKEND_URL}posts/`,
+      `https://fakesocialsapi.onrender.com/posts/`,
       objectPost,
 
       {
@@ -31,7 +31,7 @@ export const postComment = async (objectComment) => {
     const token = Cookies.get("jwt");
 
     const response = await axios.post(
-      `${process.env.REACT_APP_BACKEND_URL}posts/comment`,
+      `https://fakesocialsapi.onrender.com/posts/comment`,
       objectComment,
       {
         headers: {
@@ -56,7 +56,7 @@ export const likePost = async (postId) => {
     const myUserId = Cookies.get("idUser");
 
     const response = await axios.patch(
-      `${process.env.REACT_APP_BACKEND_URL}posts/like/yo`,
+      `https://fakesocialsapi.onrender.com/posts/like/yo`,
       {
         postId,
         myUserId,
@@ -84,7 +84,7 @@ export const unLikePost = async (postId) => {
     const myUserId = Cookies.get("idUser");
 
     const response = await axios.patch(
-      `${process.env.REACT_APP_BACKEND_URL}posts/unlike/yo`,
+      `https://fakesocialsapi.onrender.com/posts/unlike/yo`,
       {
         postId,
         myUserId,
@@ -112,7 +112,7 @@ export const deletePost = async (postId) => {
     const userId = Cookies.get("idUser");
 
     const response = await axios.delete(
-      `${process.env.REACT_APP_BACKEND_URL}posts/delete/${postId}`,
+      `https://fakesocialsapi.onrender.com/posts/delete/${postId}`,
       {
         params: {
           userId: userId,
@@ -137,7 +137,7 @@ export const getPostDetail = async (postId) => {
     const token = Cookies.get("jwt");
 
     const response = await axios.get(
-      `${process.env.REACT_APP_BACKEND_URL}posts/detail/${postId}`,
+      `https://fakesocialsapi.onrender.com/posts/detail/${postId}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -159,7 +159,7 @@ export const getAllPosts = async () => {
     const token = Cookies.get("jwt");
 
     const response = await axios.get(
-      `${process.env.REACT_APP_BACKEND_URL}posts/`,
+      `https://fakesocialsapi.onrender.com/posts/`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -182,7 +182,7 @@ export const getAllLikes = async (userId) => {
     const token = Cookies.get("jwt");
 
     const response = await axios.get(
-      `${process.env.REACT_APP_BACKEND_URL}posts/likes/${userId}`,
+      `https://fakesocialsapi.onrender.com/posts/likes/${userId}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,

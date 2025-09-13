@@ -12,11 +12,7 @@ import { FaPeopleArrows } from "react-icons/fa";
 import { SiLinkedin, SiGithub } from "react-icons/si";
 import { BiMenu } from "react-icons/bi";
 
-const Header = ({
-  handleOptionAccountButtonVisibility,
-  showOptionAccount,
-  userNamePicture,
-}) => {
+const Header = ({ showOptionAccount, userNamePicture }) => {
   const [burgerMenu, setBurgerMenu] = useState(true);
   const navigate = useNavigate();
   const userId = Cookies.get("idUser");
